@@ -1,33 +1,4 @@
-*{
-    color:rgb(19, 24, 29);
-    background-color: white;
-    font-family: "Amazon Ember", Arial, sans-serif;
-}
 
-.container {
-    display: flex;
-    justify-content: top;
-    align-items: center;
-    height: 100vh;
-    position: relative;
-}
-
-.rectangle {
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    text-align: justify; /* Centrar texto */
-    margin-left: 35%;
-    margin-top: 15%;
-    justify-content: center;
-}
-
-.rectangle img {
-    width: 100px; 
-    margin-bottom: 20px;
-    text-align: center;
-}
 
 .center-img {
     display: block;
