@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="./css/style-login.css">
+</head>
+<body>
+    <!--Formulario inicio sesion-->
+        <form id="login-form">
+        <img src="./img/assets/LOGOv2.png" alt="user-img">
+        <label for="aviso">Iniciar sesión</label>
+        <label for="username">Usuario</label>
+        <input type="text" id="username" placeholder="Email" required>
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <div class="box-visible">
+            <input type="checkbox" id="visible">
+            <label for="visible">Mostrar Contraseña</label>
+        </div>
+        <button type="submit" id="submit">Iniciar sesion</button>
+        <label for="crear cuenta">¿Eres nuevo aqui?</label>
+        <button type="submit" id="registrar">Crea tu cuenta</button>
+    </form>
+
+    <!--Formulario de registro-->
+        <form id="registro-form" class="box-visible"  style="display: none;">
+        <img src="./img/assets/LOGOv2.png" alt="user-img">
+        <label for="aviso">Crear cuenta</label>
+        <label for="nombre">Tu nombre:</label>
+        <input type="text" id="username" placeholder="Nombres y apellidos" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Ingrese informacion" required>
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" placeholder="Minimo 6 caracteres" required>
+        <!-- Botón para enviar el formulario de registro -->
+        <button type="submit" id="registro-submit">Registrarse</button>
+        </form>
+
+    <footer>
+        <div class="footer-divider"></div> <!-- Línea sombreada -->
+        <div class="footer-links">
+          <a href="#">Condiciones de uso</a>
+          <a href="#">Aviso de privacidad</a>
+          <a href="#">Ayuda</a>
+        </div>
+        <p class="footer-version">© 2024-Proyecto Amazona</p>
+      </footer>
+    <script src="./js/login.js"></script> 
+    
+</body>
+</html>
