@@ -96,29 +96,12 @@ nav{
     font-weight: 500;
 }
 
-.product-details {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin: 20px;
+.header-img{
+    max-width: 100%;
+    mask-image: linear-gradient(to bottom, #000000 50%, transparent 100%);
 }
 
-.cart-item img {
-    max-width: 250px;
-    max-height: 350px;
-    margin-left: 330px;
-}
-
-.product-description {
-    flex: 1;
-    margin-left: 50px;
-}
-
-hr {
-    width: 470px;
-}
-
-.item-right {
+.account-info {
     width: 280px;
     height: 340px;
     display: flex;
@@ -127,33 +110,30 @@ hr {
     box-shadow: 1px 0px 10px 10px #ccc;
     border-radius: 10px;
     padding: 20px;
-    margin-top: -200px; 
-    margin-left: 600px;
+    margin-top: 30px; 
+    margin-left: 550px;
     margin-right: auto;
+}
+
+/* Estilo para las secciones */
+.info-item {
+    margin-bottom: 1px; /* Agrega un margen inferior de 20px entre cada sección */
+    padding: 10px; 
+    background-color: #fff; 
+    border-radius: 10px; 
+}
+
+/* Estilo para los espacios de texto */
+.input-text {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; /
 }
 
 .quantity {
     margin-bottom: 10px;
-}
-
-.pay-now-btn {
-    background-color: #ea871e; 
-    color: #000;
-    padding: 10px 12px;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    margin-top: 20px;
-}
-
-.delete-btn {
-    background-color: #e34d4d; 
-    color: #fff;
-    padding: 10px 12px;
-    border: none;
-    border-radius: 7px;
-    cursor: pointer;
-    margin-top: 8px; /* separar los botone*/
 }
 
 footer {
