@@ -1,13 +1,12 @@
 const {config} = require('dotenv');
 const express = require('express');
+const { sequelize } = require('./database/db'); 
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mysql = require('mysql');
-const { sequelize } = require('./database/db'); 
-const Producto = require('./src/models/Producto');
-const Usuario = require('./src/models/usuario');
-
-
+const Producto = require('./models/Product');
+const Usuario = require('./models/Usuario');
+const Orden = require('./models/Orden');
 const app = express();
 
 //middleware
@@ -27,8 +26,7 @@ app.get(`${api}/productos`, async (req, res) => {
     } catch (error) {
         console.error('Error al obtener los productos:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
-    }
-});
+    } });
 
 app.post(`${api}/usuarios`, async (req, res) => {
     try {
@@ -37,12 +35,40 @@ app.post(`${api}/usuarios`, async (req, res) => {
     } catch (error) {
         console.error('Error al crear un nuevo usuario:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
-    }
-});
-
-const connection = require('./database/db');
+    } });
 
 
-app.listen(3000, ()=>{
-    console.log('server is running http://localhost:3000');
-})
+app.get(`${api}/ordenes`, async (req, res) => {
+    try {
+        const ordenes = await Orden.findAll();
+        res.json(ordenes);
+    } catch (error) {
+        console.error('Error al obtener los productos:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    }});
+
+app.post(`${api}/ordenes`, async (req, res) => {
+    try {
+        const nuevaOrden = await Orden.create(req.body);
+        res.json(nuevaOrden);
+    } catch (error) {
+        console.error('Error al crear una nueva orden:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    } }
+);
+
+
+sequelize.sync()
+    .then(() => {
+        console.log('Tablas sincronizadas');
+        app.listen(3000, ()=>{
+            console.log('server is running http://localhost:3000');
+        })
+    })
+    .catch((error) => {
+        console.error('Error al sincronizar las tablas:', error);
+    });
+
+//const connection = require('./database/db');
+
+

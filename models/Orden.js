@@ -1,7 +1,7 @@
 // models/Orden.js
 
 const { DataTypes } = require('sequelize');
-const sequelize = require('./src/database/db');
+const sequelize = require('../database/db');
 
 const Orden = sequelize.define('Orden', {
   id_orden: {
@@ -31,4 +31,5 @@ const Orden = sequelize.define('Orden', {
   timestamps: false // Si no tienes timestamps en tu tabla
 });
 
+console.log(Orden === sequelize.models.Orden);
 module.exports = Orden;

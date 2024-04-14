@@ -1,7 +1,7 @@
 // models/Cliente.js
 
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('./src/database/db');
+const {DataTypes } = require('sequelize');
+const sequelize = require('../database/db');
 
 const Cliente = sequelize.define(
   
@@ -18,6 +18,6 @@ const Cliente = sequelize.define(
   timestamps: false // Si no tienes timestamps en tu tabla
 });
 
-console.log(User === sequelize.models.Cliente);
+console.log(Cliente === sequelize.models.Cliente);
 
 module.exports = Cliente;

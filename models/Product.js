@@ -1,7 +1,7 @@
 // models/Product.js
 
-const { Sequelize, DataTypes } = require('sequelize');
-const sequelize = require('./src/database/db');
+const { DataTypes } = require('sequelize');
+const sequelize = require('../database/db');
 
 const Producto = sequelize.define('Producto', {
   id_producto: {
@@ -34,6 +34,6 @@ const Producto = sequelize.define('Producto', {
   timestamps: false // Si no tienes timestamps en tu tabla
 });
 
-console.log(User === sequelize.models.Producto);
+console.log(Producto === sequelize.models.Producto);
 
 module.exports = Producto;

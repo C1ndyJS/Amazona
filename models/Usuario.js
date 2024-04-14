@@ -33,5 +33,6 @@ const Usuario = sequelize.define('Usuario', {
   tableName: 'usuario', // Nombre de la tabla en la base de datos
   timestamps: false // Si no tienes timestamps en tu tabla
 });
+console.log(Usuario=== sequelize.models.Usuario);
 
 module.exports = Usuario;

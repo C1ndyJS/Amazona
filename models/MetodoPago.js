@@ -1,7 +1,7 @@
 // models/MetodoPago.js
 
 const { DataTypes } = require('sequelize');
-const sequelize = require('./src/database/db');
+const sequelize = require('../database/db');
 
 const MetodoPago = sequelize.define('MetodoPago', {
   id_metodoPago: {
@@ -28,4 +28,5 @@ const MetodoPago = sequelize.define('MetodoPago', {
   timestamps: false // Si no tienes timestamps en tu tabla
 });
 
+console.log( MetodoPago === sequelize.models.MetodoPago);
 module.exports = MetodoPago;

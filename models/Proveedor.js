@@ -28,4 +28,6 @@ const Proveedor = sequelize.define('Proveedor', {
   timestamps: false // Si no tienes timestamps en tu tabla
 });
 
+console.log(Proveedor === sequelize.models.Proveedor);
+
 module.exports = Proveedor;
