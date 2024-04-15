@@ -1,0 +1,150 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Outfit;
+}
+
+body{
+    background-color: #fff;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #7fa07f;
+    padding: 10px 20px;
+    color: #fff;
+}
+
+.nav-search{
+   flex: 1;
+   display: flex;
+   align-items: center;
+   background: #fff;
+   color: gray;
+   max-width: 1000px;
+   border-radius: 4px;
+   margin-left: 15px; 
+}
+
+.nav-search-gategory{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 5px;
+    background: #e5e5e5;
+    border-radius: 4px 0 0 4px;
+}
+
+.nav-search-input{
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    width: 100%;
+}
+
+.nav-search-icon{
+    max-width: 41px;
+    padding: 8px;
+    background: #ea871e;
+    border-radius: 0 4px 4px 0;
+}
+
+.nav-country{
+    display: flex;
+    align-items: end;
+    margin-left: 15px;
+    font-size: 16px;
+    color: #fff
+}
+
+.nav-text{
+    margin-left: 15px;
+}
+.nav-text p{
+    font-size: 10px;
+}
+.nav-text h1{
+    font-size: 14px;
+}
+
+.nav-cart{
+    display: flex;
+    align-items: center;
+    margin: 0px 15px;
+}
+
+.nav-bottom{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 8px 20px;
+    background: #96b896;
+    color: #fff;
+    font-size: 15px;
+}
+.nav-bottom div{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+}
+
+.header-img{
+    max-width: 100%;
+    mask-image: linear-gradient(to bottom, #000000 50%, transparent 100%);
+}
+
+.account-info {
+    width: 280px;
+    height: 340px;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    box-shadow: 1px 0px 10px 10px #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 30px; 
+    margin-left: 550px;
+    margin-right: auto;
+}
+
+/* Estilo para las secciones */
+.info-item {
+    margin-bottom: 1px; /* Agrega un margen inferior de 20px entre cada sección */
+    padding: 10px; 
+    background-color: #fff; 
+    border-radius: 10px; 
+}
+
+/* Estilo para los espacios de texto */
+.input-text {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; /
+}
+
+.quantity {
+    margin-bottom: 10px;
+}
+
+footer {
+    display: flex;
+    position: fixed;
+    justify-content: space-between;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #7fa07f;
+    color: #fff;
+    padding: 20px 60px;
+    z-index: 100; /* Asegura que el footer esté encima del contenido */
+}
