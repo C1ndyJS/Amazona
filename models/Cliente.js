@@ -1,11 +1,9 @@
-// models/Cliente.js
-
-const {DataTypes } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../database/db');
 
-const Cliente = sequelize.define(
-  
-  'Cliente', {
+class Cliente extends Model {}
+
+Cliente.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true
@@ -14,6 +12,7 @@ const Cliente = sequelize.define(
     type: DataTypes.INTEGER
   }
 }, {
+  sequelize,
   tableName: 'cliente', // Nombre de la tabla en la base de datos
   timestamps: false // Si no tienes timestamps en tu tabla
 });

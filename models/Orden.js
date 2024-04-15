@@ -1,9 +1,9 @@
-// models/Orden.js
-
-const { DataTypes } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../database/db');
 
-const Orden = sequelize.define('Orden', {
+class Orden extends Model {}
+
+Orden.init({
   id_orden: {
     type: DataTypes.INTEGER,
     primaryKey: true
@@ -27,9 +27,12 @@ const Orden = sequelize.define('Orden', {
     type: DataTypes.STRING
   }
 }, {
+  sequelize,
   tableName: 'orden', // Nombre de la tabla en la base de datos
   timestamps: false // Si no tienes timestamps en tu tabla
 });
 
 console.log(Orden === sequelize.models.Orden);
+
 module.exports = Orden;
+

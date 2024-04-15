@@ -1,6 +1,6 @@
 const {config} = require('dotenv');
 const express = require('express');
-const { sequelize } = require('./database/db'); 
+const sequelize = require('./database/db'); 
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mysql = require('mysql');
@@ -57,18 +57,16 @@ app.post(`${api}/ordenes`, async (req, res) => {
     } }
 );
 
-
-sequelize.sync()
-    .then(() => {
-        console.log('Tablas sincronizadas');
-        app.listen(3000, ()=>{
-            console.log('server is running http://localhost:3000');
-        })
-    })
-    .catch((error) => {
-        console.error('Error al sincronizar las tablas:', error);
+app.listen(3000, () => {
+        console.log('Servidor corriendo en el puerto 3000');
     });
+
 
 //const connection = require('./database/db');
 
 
+sequelize.sync().then(() => {
+    app.listen(3000, () => {
+        console.log('Servidor corriendo en el puerto 3000');
+    });
+});

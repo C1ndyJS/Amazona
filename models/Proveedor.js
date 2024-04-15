@@ -1,9 +1,9 @@
-// models/Proveedor.js
-
-const { DataTypes } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../database/db');
 
-const Proveedor = sequelize.define('Proveedor', {
+class Proveedor extends Model {}
+
+Proveedor.init({
   id_proveedor: {
     type: DataTypes.INTEGER,
     primaryKey: true
@@ -24,6 +24,7 @@ const Proveedor = sequelize.define('Proveedor', {
     type: DataTypes.INTEGER
   }
 }, {
+  sequelize,
   tableName: 'proveedor', // Nombre de la tabla en la base de datos
   timestamps: false // Si no tienes timestamps en tu tabla
 });
