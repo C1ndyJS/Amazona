@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const api = process.env.API_URL;
-
 const Proveedor = require('../models/Proveedor');
 
-router.get(`${api}/proveedores`, async (req, res) => {
+router.get(`/proveedores`, async (req, res) => {
     try {
         const proveedores = await Proveedor.findAll();
         res.json(proveedores);
@@ -15,7 +13,7 @@ router.get(`${api}/proveedores`, async (req, res) => {
 }
 );
 
-router.post(`${api}/proveedores`, async (req, res) => {
+router.post(`/proveedores`, async (req, res) => {
     try {
         const nuevoProveedor = await Proveedor.create(req.body);
         res.json(nuevoProveedor);
@@ -25,3 +23,4 @@ router.post(`${api}/proveedores`, async (req, res) => {
     }
 });
 
+module.exports = router;

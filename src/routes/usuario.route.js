@@ -4,7 +4,7 @@ const api = process.env.API_URL;
 
 const Usuario = require('../models/Usuario');
 
-router.get(`${api}/usuarios`, async (req, res) => {
+router.get(`/usuarios`, async (req, res) => {
     try {
         const usuarios = await Usuario.findAll();
         res.json(usuarios);
@@ -14,7 +14,7 @@ router.get(`${api}/usuarios`, async (req, res) => {
     } }
 );
 
-router.post(`${api}/usuarios`, async (req, res) => {
+router.post(`/usuarios`, async (req, res) => {
     try {
         const nuevoUsuario = await Usuario.create(req.body);
         res.json(nuevoUsuario);

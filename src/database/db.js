@@ -1,10 +1,17 @@
 const { Sequelize } = require('sequelize');
+const {config} = require('dotenv');
+const api = process.env.host;
+require('dotenv/config')
 
-const sequelize = new Sequelize('mysql://u41e0haegfc0fixl:HeLOR5M1R4Qyz9A6wCB@bofw568bn7fz0r9222jf-mysql.services.clever-cloud.com:21296/bofw568bn7fz0r9222jf', {
-  define: {
-    // Define global options here
-    timestamps: false // Example: Disable timestamps by default
-  }
+// Obtener las credenciales de las variables de entorno
+const { MYSQL_HOST, MYSQL_DB, MYSQL_USER, MYSQL_PORT, MYSQL_PASSWORD } = process.env;
+
+// Construir la URL de conexión
+const dbUrl = `mysql://${MYSQL_USER}:${MYSQL_PASSWORD}@${MYSQL_HOST}:${MYSQL_PORT}/${MYSQL_DB}`;
+
+// Configurar la instancia de Sequelize
+const sequelize = new Sequelize(dbUrl, {
+  dialect: 'mysql',
 });
 
 async function connectToDatabase() {

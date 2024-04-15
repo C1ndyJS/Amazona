@@ -4,7 +4,7 @@ const api = process.env.API_URL;
 
 const MetodoPago = require('../models/MetodoPago');
 
-router.get(`${api}/metodopagos`, async (req, res) => {
+router.get(`/metodopagos`, async (req, res) => {
     try {
         const metodopagos = await MetodoPago.findAll();
         res.json(metodopagos);
@@ -14,7 +14,7 @@ router.get(`${api}/metodopagos`, async (req, res) => {
     }
 });
 
-router.post(`${api}/metodopagos`, async (req, res) => {
+router.post(`/metodopagos`, async (req, res) => {
     try {
         const nuevoMetodoPago = await MetodoPago.create(req.body);
         res.json(nuevoMetodoPago);

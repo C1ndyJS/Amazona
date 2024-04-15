@@ -4,7 +4,7 @@ const api = process.env.API_URL;
 
 const Orden = require('../models/Orden');
 
-router.get(`${api}/ordenes`, async (req, res) => {
+router.get(`/ordenes`, async (req, res) => {
     try {
         const ordenes = await Orden.findAll();
         res.json(ordenes);
@@ -13,7 +13,7 @@ router.get(`${api}/ordenes`, async (req, res) => {
         res.status(500).json({ error: 'Error interno del servidor' });
     }});
 
-router.post(`${api}/ordenes`, async (req, res) => {
+router.post(`/ordenes`, async (req, res) => {
     try {
         const nuevaOrden = await Orden.create(req.body);
         res.json(nuevaOrden);

@@ -23,11 +23,12 @@ app.use(api, require('./src/routes/cliente.route'));
 app.use(api, require('./src/routes/metodopago.route'));
 app.use(api, require('./src/routes/orden.route'));
 app.use(api, require('./src/routes/usuario.route'));
+app.use(api, require('./src/routes/proveedor.route'))
 
 
 //const connection = require('./database/db');
 sequelize.sync().then(() => {
     app.listen(3003, () => {
-        console.log('Servidor corriendo en el puerto 3000');
+        console.log('Servidor corriendo en el puerto 300x');
     });
 });

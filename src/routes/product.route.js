@@ -2,9 +2,9 @@ const express = require('express');
 const router = express.Router();
 const api = process.env.API_URL;
 
-const Producto = require('../models/Product');
+const Producto = require('../models/Producto');
 
-router.get(`${api}/productos`, async (req, res) => {
+router.get(`/productos`, async (req, res) => {
     try {
         const productos = await Producto.findAll();
         res.json(productos);
@@ -13,7 +13,7 @@ router.get(`${api}/productos`, async (req, res) => {
         res.status(500).json({ error: 'Error interno del servidor' });
     } });
 
-router.post(`${api}/productos`, async (req, res) => {
+router.post(`/productos`, async (req, res) => {
     try {
         const nuevoProducto = await Producto.create(req.body);
         res.json(nuevoProducto);
