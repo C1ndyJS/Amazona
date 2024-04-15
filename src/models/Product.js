@@ -37,4 +37,4 @@ Producto.init({
 
 console.log(Producto === sequelize.models.Producto);
 
-module.exports = { Producto };
+module.exports = Producto;

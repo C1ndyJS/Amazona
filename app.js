@@ -1,12 +1,12 @@
 const {config} = require('dotenv');
 const express = require('express');
-const sequelize = require('./database/db'); 
+const sequelize = require('./src/database/db'); 
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mysql = require('mysql');
-const Producto = require('./models/Product');
-const Usuario = require('./models/Usuario');
-const Orden = require('./models/Orden');
+const Producto = require('./src/models/Product');
+const Usuario = require('./src/models/Usuario');
+const Orden = require('./src/models/Orden');
 const app = express();
 
 //middleware
@@ -17,45 +17,29 @@ require('dotenv/config');
 
 const api = process.env.API_URL;
 
-//RUtas
+//Routes
+//const routes = require('./src/routes');
+//app.use(api, routes);
 
-app.get(`${api}/productos`, async (req, res) => {
-    try {
-        const productos = await Producto.findAll();
-        res.json(productos);
-    } catch (error) {
-        console.error('Error al obtener los productos:', error);
-        res.status(500).json({ error: 'Error interno del servidor' });
-    } });
+const productRoutes = require('./src/routes/product.route');
+const ordenRoutes = require('./src/routes/orden.route');
+const clientRoutes = require('./src/routes/cliente.route');
+const metodoPagoRoutes = require('./src/routes/metodopago.route');
+const userRoutes = require('./src/routes/usuario.route');
 
-app.post(`${api}/usuarios`, async (req, res) => {
-    try {
-        const nuevoUsuario = await Usuario.create(req.body);
-        res.json(nuevoUsuario);
-    } catch (error) {
-        console.error('Error al crear un nuevo usuario:', error);
-        res.status(500).json({ error: 'Error interno del servidor' });
-    } });
+const allRoutes = [
+    { path: api+'/product', route: productRoutes },
+    { path: api+'/orden', route: ordenRoutes },
+    { path: api+'/cliente', route: clientRoutes },
+    { path: api+'/metodopago', route: metodoPagoRoutes },
+    { path: api+'/usuario', route: userRoutes }
+  ];
+
+  allRoutes.forEach(({ path, route }) => {
+    app.use(`/api${path}`, route);
+  });
 
 
-app.get(`${api}/ordenes`, async (req, res) => {
-    try {
-        const ordenes = await Orden.findAll();
-        res.json(ordenes);
-    } catch (error) {
-        console.error('Error al obtener los productos:', error);
-        res.status(500).json({ error: 'Error interno del servidor' });
-    }});
-
-app.post(`${api}/ordenes`, async (req, res) => {
-    try {
-        const nuevaOrden = await Orden.create(req.body);
-        res.json(nuevaOrden);
-    } catch (error) {
-        console.error('Error al crear una nueva orden:', error);
-        res.status(500).json({ error: 'Error interno del servidor' });
-    } }
-);
 
 app.listen(3000, () => {
         console.log('Servidor corriendo en el puerto 3000');
@@ -63,10 +47,8 @@ app.listen(3000, () => {
 
 
 //const connection = require('./database/db');
-
-
 sequelize.sync().then(() => {
-    app.listen(3000, () => {
+    app.listen(3003, () => {
         console.log('Servidor corriendo en el puerto 3000');
     });
 });
