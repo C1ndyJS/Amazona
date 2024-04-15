@@ -17,21 +17,17 @@ const api = process.env.API_URL;
 //Routes
 //const routes = require('./src/routes');
 //app.use(api, routes);
-app.use(api, require('./src/routes/product.route'));
-app.use(api, require('./src/routes/orden.route'));
-app.use(api, require('./src/routes/cliente.route'));
-app.use(api, require('./src/routes/metodopago.route'));
-app.use(api, require('./src/routes/orden.route'));
-app.use(api, require('./src/routes/usuario.route'));
 
-app.listen(3000, () => {
-        console.log('Servidor corriendo en el puerto 3000');
-    });
-
+// 
+app.use(`${api}/products`, require('./src/routes/product.route'));
+app.use(`${api}/orders`, require('./src/routes/orden.route'));
+app.use(`${api}/clients`, require('./src/routes/cliente.route'));
+app.use(`${api}/paymentmethods`, require('./src/routes/metodopago.route'));
+app.use(`${api}/users`, require('./src/routes/usuario.route'));
 
 //const connection = require('./database/db');
 sequelize.sync().then(() => {
     app.listen(3003, () => {
-        console.log('Servidor corriendo en el puerto 3000');
+        console.log('Servidor corriendo en el puerto 3003');
     });
 });
