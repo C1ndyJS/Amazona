@@ -23,3 +23,5 @@ router.post(`${api}/clientes`, async (req, res) => {
         res.status(500).json({ error: 'Error interno del servidor' });
     }
 });
+
+module.exports = router;

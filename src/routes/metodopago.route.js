@@ -24,3 +24,5 @@ router.post(`${api}/metodopagos`, async (req, res) => {
     }
 }
 );
+
+module.exports = router;
