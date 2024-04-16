@@ -22,8 +22,7 @@ router.post(`/metodopagos`, async (req, res) => {
         console.error('Error al crear un nuevo metodo de pago:', error);
         res.status(500).json({ error: 'Error interno del servidor' });
     }
-}
-);
+});
  
 router.put(`/metodopagos/:id`, async (req, res) => {
     try {
