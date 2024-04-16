@@ -1,13 +1,3 @@
-<template>
-  <div class="box-row">
-    <div v-for="(item, index) in items" :key="index" class="box-col">
-      <h3>{{ item.title }}</h3>
-      <img :src="item.image" :alt="item.title">
-      <a href="/">Comprar mas</a>
-    </div>
-  </div>
-</template>
-
 <script>
 export default {
   props: {
@@ -18,6 +8,19 @@ export default {
   }
 };
 </script>
+
+
+<template>
+  <div class="box-row">
+    <div v-for="(item, index) in items" :key="index" class="box-col">
+      <h3>{{ item.title }}</h3>
+      <img :src="item.image" :alt="item.title">
+      <a href="/">Comprar mas</a>
+    </div>
+  </div>
+</template>
+
+
 
 <style>
 .box-row {
