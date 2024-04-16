@@ -24,4 +24,54 @@ router.post(`/usuarios`, async (req, res) => {
     } });
 
 
+router.put(`/usuarios/:id`, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const usuario = await Usuario.update(req.body, { where: { id_usuario: id } });
+        res.json(usuario);
+    } catch (error) {
+        console.error('Error al actualizar el usuario:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    } }
+);
+
+
+router.delete(`/usuarios/:id`, async (req, res) => {
+    try {
+        const { id } = req.params;
+        await Usuario.destroy({ where: { id_usuario: id } });
+        res.json({ message: `Usuario con id ${id} eliminado` });
+    } catch (error) {
+        console.error('Error al eliminar el usuario:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    } }
+);
+
+
+router.get(`/usuarios/:id`, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const usuario = await Usuario.findOne({ where: { id_usuario: id } });
+        res.json(usuario);
+    } catch (error) {
+        console.error('Error al obtener el usuario:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    } }
+);
+
+
+router.get(`/usuarios/rol/:id`, async (req, res) => {
+    try {
+        const { id } = req.params;
+        const usuarios = await Usuario.findAll({ where: { rol_id: id } });
+        res.json(usuarios);
+    } catch (error) {
+        console.error('Error al obtener los usuarios del rol:', error);
+        res.status(500).json({ error: 'Error interno del servidor' });
+    } }
+);
+
+
+
+
 module.exports = router;
