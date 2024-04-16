@@ -1,9 +1,25 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
+<script>
+  export default {
+    data(){
+      return {
+        title: 'Bienvenido'
+      }
+
+    }
+  }
 </script>
 
 <template>
-  <main>
-    <TheWelcome />
-  </main>
+  <div>
+    <h1> {{title}}</h1>
+  </div>
+
+  <input v-model="title" type="text"/>
 </template>
+
+
+<style scoped>
+  h1 {
+    color: wheat;
+  }
+</style>
