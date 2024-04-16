@@ -54,7 +54,27 @@ const router = createRouter({
       path: '/termsofuse',
       name: 'termsofuse',
       component: () => import('../views/TermsOfUse.vue')
-    }
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/Login.vue')
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: () => import('../views/Register.vue')
+    },
+    {
+      path: '/forgotPass',
+      name: 'forgotPass',
+      component: () => import('../views/ForgotPass.vue')
+    },
+    {
+      path: '/address',
+      name: 'address',
+      component: () => import('../views/Address.vue')
+    },
     
   ]
 })

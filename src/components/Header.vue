@@ -28,9 +28,11 @@
                 <button>Buscar</button>
             </div>
 
-            <div class="nav-text" onclick="clicka()">
-                <p>Hola, Identificate</p>
-                <h1>Cuenta y Listas <img src="./img/assets/dropdown_icon.png" width="8px" alt=""></h1>
+            <div class="nav-text">
+                <router-link :to=" {name: 'login' } ">
+                    <p>Hola, Identificate</p>
+                    <h1>Cuenta y Listas <img src="../img/assets/dropdown_icon.png" width="8px" alt=""></h1>
+                </router-link>
             </div>
 
 
@@ -158,11 +160,16 @@
         margin-left: 15px;
         margin-bottom: 0px;
     }
-    .nav-text p{
+    .nav-text a p{
         font-size: 12px;
     }
-    .nav-text h1{
+    .nav-text a h1{
         font-size: 14px;
+    }
+
+    a {
+        color: white;
+        text-decoration: none;
     }
 
 
