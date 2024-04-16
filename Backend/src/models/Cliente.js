@@ -4,7 +4,7 @@ const sequelize = require('../database/db');
 class Cliente extends Model {}
 
 Cliente.init({
-  id: {
+  id_cliente: {
     type: DataTypes.INTEGER,
     primaryKey: true
   },

@@ -4,6 +4,7 @@ const api = process.env.API_URL;
 
 const Cliente = require('../models/Cliente');
 
+//PROBADO CON POSTMAN - FUNCIONA - OBTENER CLIENTES
 router.get(`/clientes`, async (req, res) => {
     try {
         const clientes = await Cliente.findAll();
@@ -14,6 +15,7 @@ router.get(`/clientes`, async (req, res) => {
     }
 });
 
+//PROBADO CON POSTMAN - FUNCIONA - CREAR CLIENTE
 router.post(`/clientes`, async (req, res) => {
     try {
         const nuevoCliente = await Cliente.create(req.body);
@@ -24,6 +26,7 @@ router.post(`/clientes`, async (req, res) => {
     }
 });
 
+//PROBADO CON POSTMAN - FUNCIONA - ACTUALIZAR CLIENTE
 router.put(`/clientes/:id`, async (req, res) => {
     try {
         const { id } = req.params;
@@ -35,6 +38,7 @@ router.put(`/clientes/:id`, async (req, res) => {
     }
 });
 
+//PROBADO CON POSTMAN - FUNCIONA - BORRAR CLIENTE
 router.delete(`/clientes/:id`, async (req, res) => {
     try {
         const { id } = req.params;
@@ -46,7 +50,7 @@ router.delete(`/clientes/:id`, async (req, res) => {
     }
 });
 
-
+//PROBADO CON POSTMAN - FUNCIONA - BUSCAR CLIENTE POR ID
 router.get(`/clientes/:id`, async (req, res) => {
     try {
         const { id } = req.params;
@@ -58,6 +62,7 @@ router.get(`/clientes/:id`, async (req, res) => {
     }
 });
 
+//PROBADO CON POSTMAN - FUNCIONA - BUSCAR CLIENTE POR ID DE USUARIO
 router.get(`/clientes/usuario/:id`, async (req, res) => {
     try {
         const { id } = req.params;
