@@ -1,8 +1,10 @@
 # Amazona-Vue
 
-This template should help get you started developing with Vue 3 in Vite.
+Este proyecto busca juntar ambos front (el de William y Nicolas) en uno solo usando Vue js, ya que definitivamente nos va a ahorrar tiempo.
 
 ## Recommended IDE Setup
+
+Definitivamente recomendado esto:
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
@@ -17,6 +19,8 @@ npm install
 ```
 
 ### Compile and Hot-Reload for Development
+
+Usen este comando para iniciar el proyecto de manera local
 
 ```sh
 npm run dev
