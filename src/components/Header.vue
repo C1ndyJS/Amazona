@@ -11,7 +11,7 @@
         <div class="f_line">
             
             <div class="logo">
-                <img src='../img/amazona_logo.png' alt="Amazon Logo">
+                <router-link :to=" {name: 'home' } "><img src='../img/amazona_logo.png' alt="Amazon Logo"></router-link>
             </div>
 
             <div class="nav-country">
@@ -165,6 +165,8 @@
         font-size: 14px;
     }
 
+
+    
 
     #sidebar {
         flex: 1;

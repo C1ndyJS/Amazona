@@ -39,7 +39,23 @@ const router = createRouter({
       path: '/lists',
       name: 'lists',
       component: () => import('../views/Lists.vue')
+    },
+    {
+      path: '/privacy',
+      name: 'privacy',
+      component: () => import('../views/Privacy.vue')
+    },
+    {
+      path: '/returns',
+      name: 'returns',
+      component: () => import('../views/Returns.vue')
+    },
+    {
+      path: '/termsofuse',
+      name: 'termsofuse',
+      component: () => import('../views/TermsOfUse.vue')
     }
+    
   ]
 })
 
