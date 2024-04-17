@@ -15,12 +15,12 @@
             </div>
 
             <div class="nav-country">
-                <img src="../img/assets/location_icon.png" height="20" alt="">
+                <router-link :to="{ name: 'address' }"><img src="../img/assets/location_icon.png" height="20" alt=""></router-link>
             </div>
 
             <div class="envio">
                 <i class="fa-solid fa-location-dot"></i>
-                <a>Enviar</a>
+                <router-link :to="{ name: 'address' }">Enviar</router-link>
             </div>
 
             <div class="search-bar">

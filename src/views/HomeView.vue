@@ -15,11 +15,19 @@ export default {
       newItems: [
       {
         title: 'Box 2-1',
-        image: '../assets/box2-1.jpg'
+        image: '../img/assets/box2-1.jpg'
       },
       {
         title: 'Box 2-2',
         image: '../assets/box2-2.jpg'
+      },
+      {
+        title: 'Box 2-3',
+        image: '../assets/box2-3.jpg'
+      },
+      {
+        title: 'Box 2-4',
+        image: '../assets/box2-3.jpg'
       },
       {
         title: 'Box 2-3',

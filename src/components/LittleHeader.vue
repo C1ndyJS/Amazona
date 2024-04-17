@@ -18,7 +18,9 @@ export default {
   }
   
   .logo {
-    width: 200px; /* ajusta el tamaño del logo según sea necesario */
+    margin: 30px 10px 10px 30px;
+    width: 230px; /* ajusta el 
+    tamaño del logo según sea necesario */
   }
   </style>
   
