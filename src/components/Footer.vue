@@ -9,7 +9,7 @@
         <div class="container">
           <div class="row">
             <div class="col-sm-12 col-md-6">
-              <h6>About</h6>
+              <h6>Acerca de</h6>
               <p class="text-justify">
                 Amazona es una empresa líder en comercio electrónico que ha revolucionado
                  la forma en que las personas compran y venden productos en línea. Al igual 
@@ -28,7 +28,7 @@
             </div>
   
             <div class="col-xs-6 col-md-3">
-              <h6>Quick Links</h6>
+              <h6>Nuestras politicas</h6>
               <ul class="footer-links">
                 <li><router-link :to=" {name: 'returns' } ">Devoluciones</router-link></li>
                 <li><router-link :to=" {name: 'privacy' } ">Privacidad</router-link></li>

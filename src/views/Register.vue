@@ -1,21 +1,20 @@
 <script>
-import Header from '../components/Header.vue'
+import LittleHeader from '../components/LittleHeader.vue'
 import Footer from '../components/Footer.vue'
 
 
 export default {
   components: {
-    Header,
+    LittleHeader,
     Footer
   }
 }
 </script>
 
 <template>
-    <Header/>
+    <LittleHeader/>
     <div class="container">
         <form id="registro-form" class="box-visible">
-            <img src="../img/amazona_logo.png" alt="user-img">
             <h1>Crear cuenta</h1>
             <label for="nombre">Tu nombre:</label>
             <input type="text" id="username" placeholder="Nombres y apellidos" required>
@@ -122,6 +121,8 @@ form{
     text-align: center;
     color: black;
     font-weight: 480;
+
+    margin-top: 25px;
   }
 
 </style>

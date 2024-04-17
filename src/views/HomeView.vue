@@ -57,6 +57,8 @@ export default {
 
   <input v-model="title" type="text"/>
 
+
+
   <BoxRow :items="newItems"/>
 
 
