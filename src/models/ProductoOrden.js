@@ -1,34 +1,31 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../database/db');
 
-class Proveedor extends Model {}
+class ProductoOrden extends Model {}
 
-Proveedor.init({
-  id_proveedor: {
+ProductoOrden.init({
+  id_productoOrden: {
     type: DataTypes.INTEGER,
     primaryKey: true
   },
-  nombre: {
-    type: DataTypes.STRING
+  cantidad: {
+    type: DataTypes.INTEGER
   },
-  descripcion: {
-    type: DataTypes.STRING
-  },
-  contacto: {
+  opcion: {
     type: DataTypes.STRING
   },
   id_producto: {
     type: DataTypes.INTEGER
   },
-  id_usuario: {
+  id_orden: {
     type: DataTypes.INTEGER
   }
 }, {
   sequelize,
-  tableName: 'proveedor', // Nombre de la tabla en la base de datos
+  tableName: 'productoOrden', // Nombre de la tabla en la base de datos
   timestamps: false // Si no tienes timestamps en tu tabla
 });
 
-console.log(Proveedor === sequelize.models.Proveedor);
+console.log(ProductoOrden === sequelize.models.ProductoOrden);
 
-module.exports = Proveedor;
+module.exports = ProductoOrden;

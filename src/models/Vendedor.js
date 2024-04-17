@@ -1,10 +1,10 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../database/db');
 
-class Cliente extends Model {}
+class Vendedor extends Model {}
 
-Cliente.init({
-  id_cliente: {
+Vendedor.init({
+  id_vendedor: {
     type: DataTypes.INTEGER,
     primaryKey: true
   },
@@ -13,10 +13,10 @@ Cliente.init({
   }
 }, {
   sequelize,
-  tableName: 'cliente', // Nombre de la tabla en la base de datos
+  tableName: 'vendedor', // Nombre de la tabla en la base de datos
   timestamps: false // Si no tienes timestamps en tu tabla
 });
 
-console.log(Cliente === sequelize.models.Cliente);
+console.log(Vendedor === sequelize.models.Vendedor);
 
-module.exports = Cliente;
+module.exports = Vendedor;

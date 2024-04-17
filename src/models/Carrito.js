@@ -1,34 +1,34 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../database/db');
 
-class MetodoPago extends Model {}
+class Carrito extends Model {}
 
-MetodoPago.init({
-  id_metodoPago: {
+Carrito.init({
+  id_carrito: {
     type: DataTypes.INTEGER,
     primaryKey: true
   },
-  tipoPago: {
+  id_producto: {
     type: DataTypes.INTEGER
   },
-  numero: {
+  cantidad: {
     type: DataTypes.INTEGER
   },
-  cv: {
-    type: DataTypes.INTEGER
+  opcion: {
+    type: DataTypes.STRING
   },
-  fechaExpiracion: {
+  fechaActualizacion: {
     type: DataTypes.DATE
   },
-  codigoTarjetaRegalo: {
+  subtotal: {
     type: DataTypes.INTEGER
   }
 }, {
   sequelize,
-  tableName: 'metodoPago', // Nombre de la tabla en la base de datos
+  tableName: 'carrito', // Nombre de la tabla en la base de datos
   timestamps: false // Si no tienes timestamps en tu tabla
 });
 
-console.log(MetodoPago === sequelize.models.MetodoPago);
+console.log(Carrito === sequelize.models.Carrito);
 
-module.exports = MetodoPago;
+module.exports = Carrito;
