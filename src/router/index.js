@@ -75,6 +75,14 @@ const router = createRouter({
       name: 'address',
       component: () => import('../views/Address.vue')
     },
+    {
+      path: '/holamundo',
+      name: 'holamundo',
+      component: () => import('../views/Test.vue')
+    },
+    
+    
+
     
   ]
 })

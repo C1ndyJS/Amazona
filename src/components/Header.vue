@@ -31,7 +31,7 @@
             <div class="nav-text">
                 <router-link :to=" {name: 'login' } ">
                     <p>Hola, Identificate</p>
-                    <h1>Cuenta y Listas <img src="../img/assets/dropdown_icon.png" width="8px" alt=""></h1>
+                    <h1>Cuenta<img src="../img/assets/dropdown_icon.png" width="8px" alt=""></h1>
                 </router-link>
             </div>
 

@@ -1,36 +1,55 @@
 <script>
+import axios from 'axios';
 import LittleHeader from '../components/LittleHeader.vue'
-import Footer from '../components/Footer.vue'
+import LittleFooter from '../components/LittleFooter.vue'
 
 export default {
   components: {
     LittleHeader,
-    Footer,
+    LittleFooter,
   },
   data() {
     return {
-      password: '', // El valor inicial del campo de contraseña
-      showPassword: false // El valor inicial del estado de mostrar contraseña
+      username: '',
+      password: '',
+      showPassword: false,
+      loginError: '' // Nuevo estado para manejar mensajes de error de inicio de sesión
     };
   },
   computed: {
     inputType() {
       return this.showPassword ? 'text' : 'password';
     }
+  },
+  methods: {
+    async submitForm() {
+      try {
+        const response = await axios.post('http://localhost:3003/api/login', {
+          username: this.username,
+          password: this.password
+        });
+        console.log(response.data);
+        // Maneja la respuesta según tus necesidades
+        // Por ejemplo, puedes guardar los datos del usuario en el estado del componente
+        this.userData = response.data;
+      } catch (error) {
+        console.error('Error:', error);
+        // Maneja el error, muestra un mensaje al usuario, etc.
+        this.loginError = 'Nombre de usuario o contraseña incorrectos'; // Establece el mensaje de error
+      }
+    }
   }
-
 }
 </script>
-
 
 <template>
   <LittleHeader/>
   <div class="container">
-    <form id="login-form">
+    <form id="login-form" @submit.prevent="submitForm"> <!-- Agrega el evento @submit.prevent para evitar que el formulario se envíe automáticamente -->
       <label for="aviso">Iniciar sesión</label>
       <div class="input-group">
         <label for="username">Usuario</label>
-        <input type="text" id="username" placeholder="Email" required>
+        <input type="text" id="username" placeholder="Email" v-model="username" required>
       </div>
       <div class="input-group">
         <label for="password">Contraseña</label>
@@ -42,15 +61,13 @@ export default {
       </div>
       <button type="submit" id="submit">Iniciar sesión</button>
       <label for="crear cuenta">¿Eres nuevo aquí?</label>
-      <button type="submit" class="crear-cuenta-btn">Crea tu cuenta</button>
-
+      <button type="button" class="crear-cuenta-btn">Crea tu cuenta</button> <!-- Cambia el tipo de botón a "button" para evitar envíos automáticos -->
       <router-link :to="{ name: 'forgotPass' }">¿Olvidaste tu contraseña?</router-link>
+      <!-- Muestra el mensaje de error si existe -->
+      <p v-if="loginError" style="color: red;">{{ loginError }}</p>
     </form>
   </div>
-
-
-
-  <Footer/>
+  <LittleFooter/>
 </template>
 
 <style scoped>

@@ -1,20 +1,21 @@
 <script>
-import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
+import LittleHeader from '../components/LittleHeader.vue'
+import LittleFooter from '../components/LittleFooter.vue'
 
 
 export default {
   components: {
-    Header,
-    Footer
+    LittleHeader,
+    LittleFooter
   }
 }
 </script>
 
 <template>
+  <LittleHeader/>
+  
     <div class="container">
       <div class="form">
-        <img src="../img/amazona_logo.png" alt="Logo de Amazona" class="logo">
         <h1>Ayuda con la contraseña</h1>
         <p>Escribe la dirección de correo electrónico asociado a tu cuenta de Amazona.</p>
         <label for="email">Dirección de correo electrónico</label>
@@ -27,7 +28,7 @@ export default {
       </p>
     </div>
 
-    <Footer/>
+    <LittleFooter/>
   </template>
   
 

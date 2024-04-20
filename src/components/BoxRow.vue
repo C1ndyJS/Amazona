@@ -14,7 +14,7 @@ export default {
   <div class="box-row">
     <div v-for="(item, index) in items" :key="index" class="box-col">
       <h3>{{ item.title }}</h3>
-      <img :src="item.image" :alt="item.title">
+      <img v-bind:src="item.image" :alt="item.title"/>
       <a href="/">Comprar mas</a>
     </div>
   </div>
