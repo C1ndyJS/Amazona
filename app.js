@@ -5,10 +5,17 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mysql = require('mysql');
 const app = express();
+const cors = require('cors');
+
+app.use(cors());
+
+
 
 //middleware
 app.use(bodyParser.json());
 app.use(morgan('tiny'));
+
+app.set('port', 3003);
 
 require('dotenv/config');
 
@@ -31,11 +38,11 @@ app.use(api, require('./src/routes/pais.route'));
 app.use(api, require('./src/routes/productoorden.route'));
 app.use(api, require('./src/routes/valoracion.route'));
 app.use(api, require('./src/routes/vendedor.route'))
-
+app.use(api, require('./src/routes/login.route'))
 
 //const connection = require('./database/db');
 sequelize.sync().then(() => {
-    app.listen(3003, () => {
-        console.log('Servidor corriendo en el puerto 300x');
+    app.listen(app.get('port'), () => {
+        console.log('Servidor corriendo en el puerto: ', app.get('port'));
     });
 });
