@@ -1,7 +1,30 @@
 <script>
     export default {
-        name: 'Header'
+        name: 'Header',
+        data() {
+            return {
+            username: 'identificate' // Inicialmente vacío
+            };
+    },
+        created() {
+    // Verificar si hay un token de sesión almacenado
+    const token = localStorage.getItem('token')
+    if (!token) {
+      // Si no hay token, redirigir al usuario a la página de inicio de sesión
+      //this.$router.push('/login')
+    } else {
+      // Imprimir el token en la consola
+      console.log('Token:', token)
+
+      // Decodificar y mostrar el contenido del token
+      const payloadBase64 = token.split('.')[1]
+      const decodedPayload = atob(payloadBase64)
+      const payloadObj = JSON.parse(decodedPayload)
+      console.log('Contenido del payload:', payloadObj)
+      this.username = payloadObj.nombre;
     }
+  }
+}
 
     
 </script>
@@ -29,11 +52,16 @@
             </div>
 
             <div class="nav-text">
-                <router-link :to=" {name: 'login' } ">
-                    <p>Hola, Identificate</p>
+                <router-link v-if="username === 'identificate'" :to="{ name: 'login' }">
+                    <p>Hola, {{username}}</p>
+                    <h1>Cuenta<img src="../img/assets/dropdown_icon.png" width="8px" alt=""></h1>
+                </router-link>
+                <router-link v-else :to="{ name: 'profile' }">
+                    <p>Hola, {{username}}</p>
                     <h1>Cuenta<img src="../img/assets/dropdown_icon.png" width="8px" alt=""></h1>
                 </router-link>
             </div>
+            
 
 
             <div class="cart">
@@ -69,7 +97,7 @@
         <ul>
           <li>
             <i class="fa-solid fa-user"></i>   
-            <a>Hola identificate</a>
+            <a>Hola {{username}}</a>
           </li>
           <li>Inicio</li>
           <li>Contenidos</li>
