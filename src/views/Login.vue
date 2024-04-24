@@ -63,7 +63,9 @@ export default {
       </div>
       <button type="submit" id="submit">Iniciar sesión</button>
       <label for="crear cuenta">¿Eres nuevo aquí?</label>
-      <button type="button" class="crear-cuenta-btn">Crea tu cuenta</button>
+      <button type="button" class="crear-cuenta-btn">
+        <router-link :to="{ name: 'register' }">Crea tu cuenta</router-link>
+      </button>
       <!-- Cambia el tipo de botón a "button" para evitar envíos automáticos -->
       <router-link :to="{ name: 'forgotPass' }">¿Olvidaste tu contraseña?</router-link>
       <!-- Muestra el mensaje de error si existe -->
