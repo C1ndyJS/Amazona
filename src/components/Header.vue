@@ -76,7 +76,7 @@
 
             <div class="toggle-btn">
                 <div class="toggle-btn">
-                    <span>&#9776</span>
+                    <span>&#9776;</span>
                     <a>Todo</a>
                   </div>   
             </div>
@@ -93,19 +93,51 @@
         </div>
     </header>
 
-    <div id="sidebar">
-        <ul>
-          <li>
-            <i class="fa-solid fa-user"></i>   
-            <a>Hola {{username}}</a>
-          </li>
-          <li>Inicio</li>
-          <li>Contenidos</li>
-          <li>Contacto</li>
-        </ul>
-    </div> 
+    <div id="app">
+    <div :class="{ 'active': sidebarVisible }" id="sidebar">
+      <button id="close-sidebar" @click="closeSidebar">X</button>
+      <ul>
+        <li v-for="(item, index) in menuItems" :key="index" @click="activateItem(index)">
+          <i class="fa-solid fa-user" v-if="item.icon"></i>
+          <a v-if="item.link" :href="item.link">{{ item.text }}</a>
+          <span v-else>{{ item.text }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      sidebarVisible: false,
+      menuItems: [
+        { icon: true, text: 'Hola identifícate', link: null },
+        { text: 'Inicio', link: '#' },
+        { text: 'Contenidos', link: '#' },
+        { text: 'Contacto', link: '#' }
+      ]
+    };
+  },
+  methods: {
+    toggleSidebar() {
+      this.sidebarVisible = !this.sidebarVisible;
+    },
+    activateItem(index) {
+      // Eliminar la clase 'active' de todos los elementos de la lista
+      this.menuItems.forEach(item => item.active = false);
+
+      // Agregar la clase 'active' solo al elemento que se ha hecho clic
+      this.menuItems[index].active = true;
+    },
+    closeSidebar() {
+      this.sidebarVisible = false;
+    }
+  }
+};
+</script>
 
 <style scoped>
     body {
@@ -204,59 +236,76 @@
     
 
     #sidebar {
-        flex: 1;
-        position: fixed;
-        width: 200px;
-        height: 100%;
-        background: #c6bbbb;
-        left: -200px;
-        transition: all 50ms linear;
-      }
-      
-    
-    .toggle-btn {
-        cursor: pointer;
-    }
-    
-      #sidebar.active {
-        left: 0px;
-      }
-      
-      #sidebar ul li {
-        cursor: pointer;
-        color: rgba(6, 6, 6, 0.9);
-        list-style: none;
-        padding: 15px 10px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        text-align: center;
-      }
-      
-      .logo-no-user {
-        border-radius: 50%;
-        display: block;
-        margin: 0 auto; 
-      }
-      
-      #sidebar .toggle-btn {
-        display: flex;
-        position: relative;
-        left: 220px;
-        top: 20px;
-        cursor: pointer;
-        color:#ffffff;
-      }
-    
-      #sidebar .toggle-btn a {
-        margin-top: 5px;
-        margin-left: 4px;
-      }
-      
-      #sidebar .toggle-btn span {
-        display: block;
-        width: 25px;
-        text-align: center;
-        font-size: 20px;
-        border: 1px solid rgb(255, 255, 255);
-      }
+  position: fixed;
+  left: -250px;
+  top: 0;
+  bottom: 0;
+  width: 250px;
+  background-color: #f4f4f4;
+  color: #333;
+  transition: left 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #333;
+}
+
+#sidebar.active {
+  left: 0;
+}
+
+#sidebar button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+#sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#sidebar ul li {
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+}
+
+#sidebar ul li:last-child {
+  border-bottom: none;
+  /* Eliminar borde inferior del último elemento */
+}
+
+#sidebar ul li a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+#sidebar ul li a:hover,
+#sidebar ul li:hover {
+  color: #007bff;
+  /* color al pasar el mouse */
+  cursor: pointer;
+}
+
+#close-sidebar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  color: #363232;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+#close-sidebar:hover {
+  color: #ff2a00;
+  /* Cambiar color al pasar el mouse */
+}
 
 </style>
