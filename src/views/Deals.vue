@@ -1,0 +1,295 @@
+<script>
+import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
+import BoxRow from '../components/BoxRow.vue';
+
+export default {
+  components: {
+    Header,
+    Footer,
+    BoxRow
+  },
+  data() {
+    return {
+      title: 'Bienvenido',
+      newItems: [
+      {
+        title: 'Box 2-1',
+        image: '../img/assets/box2-1.jpg'
+      },
+      {
+        title: 'Box 2-2',
+        image: '../assets/box2-2.jpg'
+      },
+      {
+        title: 'Box 2-3',
+        image: '../assets/box2-3.jpg'
+      },
+      {
+        title: 'Box 2-4',
+        image: '../assets/box2-3.jpg'
+      },
+      {
+        title: 'Box 2-3',
+        image: '../assets/box2-3.jpg'
+      },
+      // Agrega más objetos según sea necesario
+    ]
+
+    };
+  }
+};
+</script>
+
+
+
+
+<template>
+
+  <Header/>
+
+  
+
+<div class="box-row">
+    <div class="box-col">
+        <h3>Papeleria</h3>
+        <img src="../img/assets/box3-1.jpg" alt="">
+        <a href="/">Comprar mas</a>
+    </div>
+        <div class="box-col">
+            <h3>Laptops para estudio</h3>
+            <img src="../img/assets/box3-2.jpg" alt="">
+            <a href="/">Comprar mas</a>
+        </div>
+        <div class="box-col">
+            <h3>Sillas de oficina</h3>
+            <img src="../img/assets/box3-3.jpg" alt="">
+            <a href="/">Comprar mas</a>
+        </div>
+        <div class="box-col">
+            <h3>Monitores gaming</h3>
+            <img src="../img/assets/box3-4.jpg" alt="">
+            <a href="/">Comprar mas</a>
+        </div>
+</div>
+
+<div class="products-slider-with-price">
+    <h2>Ofertas y precios bajos</h2>
+    <div class="products">
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="../img/assets/product2-1.jpg" alt="">
+            </div>
+            <div class="product-offer">
+               <p>50% descuento</p> <span>Mitad de precio</span> 
+            </div>
+            <p class="product-price">$ <span>19.99</span> Lista de precios: $29.50</p>
+            <h4>Ideal para ti</h4>
+        </div>
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="../img/assets/product2-2.jpg" alt="">
+            </div>
+            <div class="product-offer">
+               <p>10% descuento</p> <span>Ropa de playa</span> 
+            </div>
+            <p class="product-price">$ <span>60.99</span> Lista de precios: $70.00</p>
+            <h4>Versatil y liviano</h4>
+        </div>
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="../img/assets/product2-3.jpg" alt="">
+            </div>
+            <div class="product-offer">
+               <p>25% descuento</p> <span>Pijamas</span> 
+            </div>
+            <p class="product-price">$ <span>50.00</span> Lista de precios: $50.99</p>
+            <h4>Articulos para niños</h4>
+        </div>
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="../img/assets/product2-4.jpg" alt="">
+            </div>
+            <div class="product-offer">
+               <p>6% descuento</p> <span>Tematica dinosaurio</span> 
+            </div>
+            <p class="product-price">$ <span>19.99</span> Lista de precios: $20.50</p>
+            <h4>Ropa infantil</h4>
+        </div>
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="../img/assets/product2-5.jpg" alt="">
+            </div>
+            <div class="product-offer">
+               <p>15% descuento</p> <span>Sueters</span> 
+            </div>
+            <p class="product-price">$ <span>80.99</span> Lista de precios: $100.0</p>
+            <h4>Ropa de invierno</h4>
+        </div>
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="../img/assets/product2-6.jpg" alt="">
+            </div>
+            <div class="product-offer">
+               <p>Funko</p> <span>Juego de mesa para 2-4 jugadores</span> 
+            </div>
+            <p class="product-price">$ <span>30.94</span> Lista de precios: $30.99</p>
+            <h4>Edades: 10 años y más</h4>
+        </div>
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="../img/assets/product2-7.jpg" alt="">
+            </div>
+            <div class="product-offer">
+               <p>30% descuento</p> <span>Ropa de cama</span> 
+            </div>
+            <p class="product-price">$ <span>50.99</span> Lista de precios: $70.50</p>
+            <h4>Ideal para tu hijo</h4>
+        </div>
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="../img/assets/product2-8.jpg" alt="">
+            </div>
+            <div class="product-offer">
+               <p>10% descuento</p> <span>Libreta</span> 
+            </div>
+            <p class="product-price">$ <span>8.99</span> Lista de precios: $19.50</p>
+            <h4>Fantasia animada</h4>
+        </div>
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="../img/assets/product2-11.jpg" alt="">
+            </div>
+            <div class="product-offer">
+               <p>8% descuento</p> <span>Kit didactico</span> 
+            </div>
+            <p class="product-price">$ <span>25.99</span> Lista de precios: $29.50</p>
+            <h4>Para aprender</h4>
+        </div>
+        <div class="product-card">
+            <div class="product-img-container">
+                <img src="../img/assets/product2-12.jpg" alt="">
+            </div>
+            <div class="product-offer">
+               <p>5% descuento</p> <span>Disfraces</span> 
+            </div>
+            <p class="product-price">$ <span>19.99</span> Lista de precios: $29.50</p>
+            <h4>Ropa infantil</h4>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+  <Footer/>
+</template>
+
+<style>
+
+
+.box-row{
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  justify-content: space-between;
+  margin: 20px 30px;
+}
+
+.box-col{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 20px;
+  background: #fff;
+  max-width: 24%;
+  min-height: 200px;
+  border-radius: 2%;
+}
+
+.box-col a{
+  font-size: 13px;
+  color: #009999;
+  font-weight: 500;
+}
+
+.products-slider{
+  background: #ffff;
+  margin: 0 30px;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 1%;
+}
+.products-slider .products{
+  display: flex;
+  overflow-x: auto;
+  gap: 20px;
+  margin-top: 10px;
+}
+.products-slider .products img{
+  max-width: 200px;
+  max-height: 200;
+}
+.products-slider .products::-webkit-scrollbar{
+  display: none;
+}
+
+.products-slider-with-price{
+  overflow-x: auto;
+  white-space: nowrap;
+  background: #fff;
+  margin: 0 30px;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 1%;
+}
+.products-slider-with-price .products{
+  display: inline-block;
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  margin-top: 10px;
+}
+.products-slider-with-price .products::-webkit-scrollbar{
+  display: none;
+}
+.products-card{
+  display: inline-block;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  min-width: 210px;
+  background: #fbfbfb;
+}
+.product-card img{
+  width: 110px;
+  margin: 0 50px;
+}
+.product-offer p{
+  background: #d23737;
+  color: #fff;
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 2px;
+  margin: 8px 0;
+  font-size: 13px;
+}
+.product-offer span{
+  color: #be0b3b;
+  font-weight: 500;
+  font-size: 12px;
+}
+.product-price{
+  color: gray;
+  font-size: 13px;
+}
+.product-card h4{
+  color: #525252;
+  font-size: 15px;
+  font-weight: 400;
+}
+</style>
+
+
