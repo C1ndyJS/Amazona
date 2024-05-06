@@ -1,18 +1,79 @@
+<template>
+  <header>
+    <div class="f_line">
+      <div class="logo">
+        <router-link :to="{ name: 'home' } "><img src="../img/amazona_logo.png" alt="Amazon Logo"></router-link>
+      </div>
+
+      <div class="nav-country">
+        <router-link :to="{ name: 'address' }"><img src="../img/assets/location_icon.png" height="20" alt=""></router-link>
+      </div>
+
+      <div class="envio">
+        <i class="fa-solid fa-location-dot"></i>
+        <router-link :to="{ name: 'address' }">Enviar</router-link>
+      </div>
+
+      <div class="search-bar">
+        <input type="text" placeholder="Buscar en Amazon">
+        <button>Buscar</button>
+      </div>
+
+      <div class="nav-text">
+        <router-link v-if="username === 'identificate'" :to="{ name: 'login' }">
+          <p>Hola, {{username}}</p>
+          <h1>Cuenta<img src="../img/assets/dropdown_icon.png" width="8px" alt=""></h1>
+        </router-link>
+        <router-link v-else :to="{ name: 'profile' }">
+          <p>Hola, {{username}}</p>
+          <h1>Cuenta<img src="../img/assets/dropdown_icon.png" width="8px" alt=""></h1>
+        </router-link>
+      </div>
+
+      <div class="cart">
+        <router-link :to="{ name: 'carrito' }">
+        <button>Carrito</button>
+        </router-link>
+        <div class="cart-items">
+          <!-- Aquí se mostrarían los elementos del carrito -->
+        </div>
+      </div>
+    </div>
+
+    <div class="s_line">
+      <div class="toggle-btn">
+        <span>&#9776;</span>
+        <a @click="toggleSidebar">Todo</a>
+      </div> 
+
+      <router-link :to="{name: 'deals' }">Ofertas del día</router-link>
+      <router-link :to="{name: 'customerService' }">Servicio al cliente</router-link>
+      <router-link :to="{name: 'lists' }">Listas</router-link>
+      <router-link :to="{name: 'giftCards' }">Tarjetas de regalo</router-link>
+      <router-link :to="{name: 'sell' }">Vender</router-link>
+    </div>
+  </header>
+</template>
+
 <script>
-    export default {
-        name: 'Header',
-        data() {
-            return {
-            username: 'identificate' // Inicialmente vacío
-            };
-    },
-        created() {
+export default {
+  name: 'Header',
+  data() {
+    return {
+      username: 'identificate', // Inicialmente vacío
+      sidebarVisible: false,
+      menuItems: [
+        { icon: true, text: 'Hola identifícate', link: null },
+        { text: 'Inicio', link: '#' },
+        { text: 'Contenidos', link: '#' },
+        { text: 'Contacto', link: '#' }
+      ]
+    };
+  },
+  created() {
     // Verificar si hay un token de sesión almacenado
     const token = localStorage.getItem('token')
-    if (!token) {
-      // Si no hay token, redirigir al usuario a la página de inicio de sesión
-      //this.$router.push('/login')
-    } else {
+    if (token) {
       // Imprimir el token en la consola
       console.log('Token:', token)
 
@@ -23,107 +84,13 @@
       console.log('Contenido del payload:', payloadObj)
       this.username = payloadObj.nombre;
     }
-  }
-}
-
-    
-</script>
-
-<template>
-    <header>
-        <div class="f_line">
-            
-            <div class="logo">
-                <router-link :to=" {name: 'home' } "><img src='../img/amazona_logo.png' alt="Amazon Logo"></router-link>
-            </div>
-
-            <div class="nav-country">
-                <router-link :to="{ name: 'address' }"><img src="../img/assets/location_icon.png" height="20" alt=""></router-link>
-            </div>
-
-            <div class="envio">
-                <i class="fa-solid fa-location-dot"></i>
-                <router-link :to="{ name: 'address' }">Enviar</router-link>
-            </div>
-
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar en Amazon">
-                <button>Buscar</button>
-            </div>
-
-            <div class="nav-text">
-                <router-link v-if="username === 'identificate'" :to="{ name: 'login' }">
-                    <p>Hola, {{username}}</p>
-                    <h1>Cuenta<img src="../img/assets/dropdown_icon.png" width="8px" alt=""></h1>
-                </router-link>
-                <router-link v-else :to="{ name: 'profile' }">
-                    <p>Hola, {{username}}</p>
-                    <h1>Cuenta<img src="../img/assets/dropdown_icon.png" width="8px" alt=""></h1>
-                </router-link>
-            </div>
-            
-
-
-            <div class="cart">
-                <button onclick="toggleCart()">Carrito</button>
-                <div class="cart-items">
-                    <!-- Aquí se mostrarían los elementos del carrito -->
-                </div>
-            </div>
-        </div>
-
-        <div class="s_line">
-
-            <div class="toggle-btn">
-                <div class="toggle-btn">
-                    <span>&#9776;</span>
-                    <a>Todo</a>
-                  </div>   
-            </div>
-
-                <router-link :to=" {name: 'deals' } ">  Ofertas del dia</router-link>
-     
-                <router-link :to=" {name: 'customerService' } "> Servicio al cliente</router-link>
-
-                <router-link :to=" {name: 'lists' } "> Listas</router-link>
-
-                <router-link :to=" {name: 'giftCards' } "> Tarjetas de regalo</router-link>
-
-                <router-link :to=" {name: 'sell' } "> Vender </router-link>
-        </div>
-    </header>
-
-    <div id="app">
-    <div :class="{ 'active': sidebarVisible }" id="sidebar">
-      <button id="close-sidebar" @click="closeSidebar">X</button>
-      <ul>
-        <li v-for="(item, index) in menuItems" :key="index" @click="activateItem(index)">
-          <i class="fa-solid fa-user" v-if="item.icon"></i>
-          <a v-if="item.link" :href="item.link">{{ item.text }}</a>
-          <span v-else>{{ item.text }}</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-
-</template>
-
-<script>
-export default {
-  data() {
-    return {
-      sidebarVisible: false,
-      menuItems: [
-        { icon: true, text: 'Hola identifícate', link: null },
-        { text: 'Inicio', link: '#' },
-        { text: 'Contenidos', link: '#' },
-        { text: 'Contacto', link: '#' }
-      ]
-    };
   },
   methods: {
     toggleSidebar() {
       this.sidebarVisible = !this.sidebarVisible;
+    },
+    toggleCart() {
+      // Implementa la lógica para mostrar u ocultar el carrito
     },
     activateItem(index) {
       // Eliminar la clase 'active' de todos los elementos de la lista
@@ -131,9 +98,6 @@ export default {
 
       // Agregar la clase 'active' solo al elemento que se ha hecho clic
       this.menuItems[index].active = true;
-    },
-    closeSidebar() {
-      this.sidebarVisible = false;
     }
   }
 };
