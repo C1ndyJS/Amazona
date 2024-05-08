@@ -1,14 +1,12 @@
 <script>
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
-import CategoryRow from '../components/CategoryRow.vue'
 import axios from 'axios'
 
 export default {
   components: {
     Header,
-    Footer,
-    CategoryRow
+    Footer
   },
   data() {
     return {
