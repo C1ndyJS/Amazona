@@ -1,0 +1,268 @@
+<template>
+
+    <Header />
+
+    <div class="content">
+      <div class="product-details">
+        <div class="product-image">
+          <img :src="productImageSrc" :alt="productName">
+        </div>
+        <div class="product-description">
+          <h2>{{ productName }}</h2>
+          <h3>Caracteristicas</h3>
+          <p>Marca: {{ productBrand }}</p>
+          <p>Color: {{ productColor }}</p>
+          <p>Peso: {{ productWeight }}</p>
+          <p>Material: {{ productMaterial }}</p>
+          <p>Precio: ${{ productPrice }}</p>
+          <hr>
+          <h4>Sobre este articulo:</h4>
+          <p>{{ productDescription }}</p>
+        </div>
+        <div class="product-actions">
+          <div class="price">
+            <p>Precio: ${{ productPrice }}</p>
+          </div>
+          <div class="delivery-time">
+            <p>Tiempo estimado de entrega: {{ deliveryTime }}</p>
+          </div>
+          <div class="quantity">
+            <label for="quantity">Cantidad:</label>
+            <input type="number" id="quantity" name="quantity" v-model="quantity" min="1">
+          </div>
+          <div class="buttons">
+            <button class="add-to-cart" @click="addToCart">Agregar al carrito</button>
+            <button class="buy-now" @click="buyNow">Comprar ahora</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <Footer />
+  </template>
+  
+  <script>
+import Header from '../components/Header.vue'
+import Footer from '../components/Footer.vue'
+
+  export default {
+    components: {
+        Header,
+        Footer,
+    },
+    data() {
+      return {
+        productName: "Mancuerna de entrenamiento",
+        productBrand: "Generica",
+        productColor: "Azul marino",
+        productWeight: "20 libras",
+        productMaterial: "Neopreno",
+        productPrice: 80000,
+        productDescription: "Juego de 2 mancuernas para entrenamiento de resistencia. Cada mancuerna pesa 10 libras. Revestimiento de neopreno de fácil agarre para un agarre seguro. Número de peso impreso en cada extremo y codificado por colores para una rápida identificación. La forma hexagonal evita que las mancuernas rueden.",
+        deliveryTime: "7 días",
+        quantity: 1,
+        productImageSrc: "FRONTEND\src\img\mancuernas.jpg",
+      };
+    },
+    methods: {
+      addToCart() {
+        // Lógica para agregar al carrito
+      },
+      buyNow() {
+        // Lógica para comprar ahora
+      }
+    }
+  };
+  </script>
+  
+  <style scoped>
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Outfit;
+}
+
+body{
+    background-color: #fff;
+}
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #7fa07f;
+    padding: 10px 20px;
+    color: #fff;
+}
+
+.nav-search{
+   flex: 1;
+   display: flex;
+   align-items: center;
+   background: #fff;
+   color: gray;
+   max-width: 1000px;
+   border-radius: 4px;
+   margin-left: 15px; 
+}
+
+.nav-search-gategory{
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    gap: 5px;
+    background: #e5e5e5;
+    border-radius: 4px 0 0 4px;
+}
+
+.nav-search-input{
+    border: none;
+    outline: none;
+    padding-left: 20px;
+    width: 100%;
+}
+
+.nav-search-icon{
+    max-width: 41px;
+    padding: 8px;
+    background: #ea871e;
+    border-radius: 0 4px 4px 0;
+}
+
+.nav-country{
+    display: flex;
+    align-items: end;
+    margin-left: 15px;
+    font-size: 16px;
+    color: #fff
+}
+
+.nav-text{
+    margin-left: 15px;
+}
+.nav-text p{
+    font-size: 10px;
+}
+.nav-text h1{
+    font-size: 14px;
+}
+
+.nav-cart{
+    display: flex;
+    align-items: center;
+    margin: 0px 15px;
+}
+
+.nav-bottom{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 8px 20px;
+    background: #96b896;
+    color: #fff;
+    font-size: 15px;
+}
+.nav-bottom div{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+}
+
+.header-slider ul{
+    display: flex;
+    overflow-y: hidden;
+}
+.header-img{
+    max-width: 100%;
+    mask-image: linear-gradient(to bottom, #000000 50%, transparent 100%);
+}
+
+.box-row{
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 20px;
+    justify-content: space-between;
+    margin: 20px 30px;
+}
+
+.box-col{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 20px;
+    background: #fff;
+    max-width: 24%;
+    min-height: 200px;
+}
+
+.box-col a{
+    font-size: 13px;
+    color: #009999;
+    font-weight: 500;
+}
+
+.content {
+    min-height: calc(100vh - 130px); /* Ajusta la altura del contenido principal */
+    /* 130px es la suma de la altura del encabezado (nav) y la barra inferior (nav-bottom) */
+}
+
+.product-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px;
+}
+
+.product-image img {
+    max-width: 600px;
+    max-height: 550px;
+}
+
+.product-description {
+    flex: 1;
+    margin-left: 50px;
+}
+
+hr {
+    width: 470px;
+}
+
+.product-actions {
+    width: 280px;
+    height: 200px;
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    box-shadow: 10px 4px 10px 10px #ccc;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 70px;
+    margin-left: auto;
+    margin-right: auto;
+      
+}
+
+.quantity {
+    margin-bottom: 10px;
+}
+
+.buttons button {
+    background-color: #ea871e;
+    color: #000;
+    padding: 10px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+
+
+  </style>
+  
