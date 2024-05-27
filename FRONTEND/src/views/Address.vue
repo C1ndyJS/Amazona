@@ -12,42 +12,51 @@ export default {
 </script>
 
 <template>
+  <div class="background">
     
     <LittleHeader/>
     <div class="form">
       <header>
-        <h1>Agregar una Nueva Dirección</h1>
+        <h1>Agrega una Nueva Direccíon</h1>
         <p>Completa la siguiente información para agregar una nueva dirección.</p>
       </header>
       <form>
         <div class="input-group">
-          <label for="full-name">Nombre completo (nombre y apellido):</label>
+          <label for="full-name">Nombre completo</label>
           <input type="text" id="full-name" placeholder="Ingrese su nombre completo">
         </div>
         <div class="input-group">
-          <label for="address">Dirección:</label>
+          <label for="address">Dirección</label>
           <input type="text" id="address" placeholder="Ingrese su dirección">
         </div>
         <div class="input-group">
-          <label for="city">Ciudad:</label>
+          <label for="city">Ciudad</label>
           <input type="text" id="city" placeholder="Ingrese su ciudad">
         </div>
         <div class="input-group">
-          <label for="phone">Número de teléfono:</label>
+          <label for="phone">Número de teléfono</label>
           <input type="text" id="phone" placeholder="Ingrese su número de teléfono">
         </div>
         <button id="add-btn">Agregar Nueva Dirección</button>
+         <router-link :to=" {name: 'carrito' } ">
+          <button>Ver carrito</button>
+         </router-link>
       </form>
       <p class="additional-info">Al agregar una nueva dirección, podrás seleccionarla al realizar tu próximo pedido.</p>
     </div>       
-    
+  </div>
     <Footer/>
   </template>
   
   <style scoped>
 
+
     img {
         width: 500px;
+    }
+
+    .form {
+      background-color: #ffffff;
     }
 
     .form header {
@@ -58,7 +67,7 @@ export default {
     .form {
       width: 800px;
       margin: 30px auto;
-      padding: 20px;
+      padding: 15px;
       border-radius: 20px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
@@ -92,7 +101,13 @@ export default {
     }
   
     .additional-info {
-      text-align: justify;
+      padding-top: 8px;
+      text-align: center;
+    }
+
+    .background {
+      background-color: black;
+      height: 700px;
     }
   </style>
   

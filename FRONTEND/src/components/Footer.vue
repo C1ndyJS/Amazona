@@ -18,7 +18,7 @@
             </div>
   
             <div class="col-xs-6 col-md-3">
-              <h6>Categories</h6>
+              <h6>Categorias</h6>
               <ul class="footer-links">
                 <li><a href="#">C</a></li>
                 <li><a href="#">UI Design</a></li>

@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import DetallesProducto from '../views/DetallesProducto.vue'
+import Carrito from '../views/Carrito.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -15,14 +18,20 @@ const router = createRouter({
       component: () => import('../views/Blog.vue')
     },
     {
-      path: '/verproducto',
-      name: 'verproducto',
-      component: () => import('../views/verproducto.vue')
+      path: '/producto/:id',
+      name: 'detallesproducto',
+      component: DetallesProducto,
+      props: true
     },
     {
       path: '/customerService',
       name: 'customerService',
       component: () => import('../views/CustomerService.vue')
+    },
+    {
+      path: '/pedidos',
+      name: 'pedidos',
+      component: () => import('../views/Pedidos.vue')
     },
     {
       path: '/deals',
@@ -70,6 +79,11 @@ const router = createRouter({
       component: () => import('../views/Register.vue')
     },
     {
+      path: '/carrito',
+      name: 'carrito',
+      component: Carrito,
+    },
+    {
       path: '/forgotPass',
       name: 'forgotPass',
       component: () => import('../views/ForgotPass.vue')
@@ -85,9 +99,14 @@ const router = createRouter({
       component: () => import('../views/Profile.vue')
     },
     {
-      path: '/holamundo',
-      name: 'holamundo',
-      component: () => import('../views/Test.vue')
+      path: '/products',
+      name: 'products',
+      component: () => import('../views/Products.vue')
+    },
+    {
+      path: '/categories',
+      name: 'categories',
+      component: () => import('../views/Categories.vue')
     }
   ]
 })

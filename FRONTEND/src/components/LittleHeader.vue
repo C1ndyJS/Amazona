@@ -7,7 +7,7 @@ export default {
 <template>
   <header class="header">
     <router-link :to="{ name: 'home' }"
-      ><img src="../img/amazona_logo.png" alt="Logo de Amazona" class="logo"
+      ><img src="../img/AMAZONA_LOGO.svg" alt="Logo de Amazona" class="logo"
     /></router-link>
   </header>
 </template>

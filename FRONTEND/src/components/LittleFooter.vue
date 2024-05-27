@@ -4,7 +4,6 @@ export default {
 }
 </script>
 
-
 <template>
     <footer>
         <div class="footer-divider"></div> <!-- Línea sombreada -->
@@ -16,8 +15,7 @@ export default {
         <p class="footer-version">© 2024-Proyecto Amazona</p>
       </footer>
   </template>
-  
-  
+   
   <style scoped>
 
 .footer-divider {

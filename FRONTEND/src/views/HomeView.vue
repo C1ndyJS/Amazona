@@ -2,12 +2,14 @@
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import CategoryRow from '../components/CategoryRow.vue'
+import BackHome from '../components/BackHome.vue'
 import axios from 'axios'
 
 export default {
   components: {
     Header,
     Footer,
+    BackHome,
     CategoryRow,
   },
   data() {
@@ -16,28 +18,6 @@ export default {
       productos: [],
     }
   },
-
-  mounted() {
-    // Realizar la solicitud para obtener categorías
-    axios.get('http://localhost:3003/api/categorias')
-      .then(response => {
-        this.categorias = response.data;
-      })
-      .catch(error => {
-        console.error('Error al obtener las categorias:', error);
-      });
-
-    // Realizar la solicitud para obtener productos
-    axios.get('http://localhost:3003/api/productos')
-      .then(response => {
-        this.productos = response.data;
-      })
-      .catch(error => {
-        console.error('Error al obtener los productos:', error);
-      });
-  },
-
-
 
   created() {
     // Verificar si hay un token de sesión almacenado
@@ -55,6 +35,26 @@ export default {
       const payloadObj = JSON.parse(decodedPayload)
       console.log('Contenido del payload:', payloadObj)
     }
+    
+    
+    // Realizar la solicitud para obtener categorías
+    axios.get('http://localhost:3003/api/categorias')
+      .then(response => {
+        this.categorias = response.data;
+      })
+      .catch(error => {
+        console.error('Error al obtener las categorias:', error);
+      });
+
+    // Realizar la solicitud para obtener productos
+    axios.get('http://localhost:3003/api/productos')
+      .then(response => {
+        this.productos = response.data;
+        /*console.log('Productos cargados:', this.productos); // Debugging*/
+      })
+      .catch(error => {
+        console.error('Error al obtener los productos:', error);
+      });
   }
 }
 </script>
@@ -70,13 +70,13 @@ export default {
   </div>
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../img/slider_img/slider1.jpg" class="d-block w-100" alt="...">
+      <img src="../img/slider_img/slider2.svg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="../img/slider_img/slider2.jpg" class="d-block w-100" alt="...">
+      <img src="../img/slider_img/slider1.svg" class="d-block w-100" alt="...">
     </div>
     <div class="carousel-item">
-      <img src="../img/slider_img/slider3.jpg" class="d-block w-100" alt="...">
+      <img src="../img/slider_img/slider3.svg" class="d-block w-100" alt="...">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -89,25 +89,62 @@ export default {
   </button>
 </div>
 
+<div class="titulo-marquee">
+  <h5>
+    Marcas Aliadas
+  </h5>
+</div>
+
+<div class="wrapper">
+    <div class="item item1">
+      <img src="../img/Marquee1.svg" alt="" style="width: 172px;">
+    </div>
+    <div class="item item2">
+      <img src="../img/Marquee1.svg" alt="" style="width: 172px;">
+    </div>
+    <div class="item item3">
+      <img src="../img/Marquee1.svg" alt="" style="width: 172px;">  
+    </div>
+    <div class="item item4">
+      <img src="../img/Marquee1.svg" alt="" style="width: 172px;">
+    </div>
+    <div class="item item5">
+      <img src="../img/Marquee1.svg" alt="" style="width: 172px;">
+    </div>  
+    <div class="item item6">
+      <img src="../img/Marquee1.svg" alt="" style="width: 172px;">
+    </div>
+    <div class="item item7">
+      <img src="../img/Marquee1.svg" alt="" style="width: 172px;">
+    </div>
+    <div class="item item8">
+      <img src="../img/Marquee1.svg" alt="" style="width: 172px;">
+    </div>
+  </div>
+
   <CategoryRow :categorias="categorias" />
 
+  <div class="titulo-productos">
+  <h2>
+    Productos populares en esta temporada
+  </h2>
+</div>
+
   <div class="products-slider">
-    <h2>Productos populares en esta temporada</h2>
     <div class="products">
-    <div v-for="producto in productos" :key="producto.id" class="card" style="width: 18rem;">
-      <img :src="producto.url_imagen" class="card-img-top" :alt="producto.nombre" />
-      <div class="card-body">
-        <h5 class="card-title">{{ producto.nombre }}</h5>
-        <p class="card-text">{{ producto.descripcion }}</p>
-        <!-- Puedes agregar más campos del producto aquí -->
-        <router-link :to="{ name: 'verproducto' }" class="btn btn-primary">Ver detalles</router-link>
+      <div v-for="producto in productos" :key="producto.id_producto" class="card" style="width:22rem;">
+        <router-link v-if="producto.id_producto" :to="{ name: 'detallesproducto', params: { id: producto.id_producto } }" class="producto-link">
+        <img :src="producto.url_imagen" class="card-img-top" :alt="producto.nombre" style="padding-top:30px; width:400px;"/>
+        <div class="card-body">
+          <h5 class="card-title">{{ producto.nombre }}</h5>
+          <p class="card-text">{{ producto.descripcion }}</p>
+        </div>
+      </router-link>
       </div>
     </div>
   </div>
-  </div>
 
-  
-
+ 
   <div class="box-row">
     <div class="box-col">
       <h3>Papeleria</h3>
@@ -244,19 +281,100 @@ export default {
         <p class="product-price">$ <span>19.99</span> Lista de precios: $29.50</p>
         <h4>Ropa infantil</h4>
       </div>
+     </div>
     </div>
-  </div>
-
-  <Footer />
+   <BackHome />
+ <Footer />
 </template>
 
 <style>
-.box-row {
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 20px;
-  justify-content: space-between;
-  margin: 20px 30px;
+
+.producto-link {
+    text-decoration: none; /* Elimina el subrayado de los hipervínculos */
+  }
+
+  .titulo-productos{
+    padding: 10px;
+    text-align: center;
+  }
+
+
+.titulo-marquee {
+  padding-top: 20px;
+  text-align: center;
+}
+
+.titulo-marquee h5{
+  font-size: 24px;
+}
+
+.wrapper {
+  width: 95%;
+  max-width: 1536px;
+  margin-inline: auto;
+  position: relative;
+  height: 100px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    rgba(0,0,0,0),
+    rgba(0,0,0,1) 20%,
+    rgba(0,0,0,1) 80%,
+    rgba(0,0,0,0)
+    );
+}
+
+.item {
+  width: 170px;
+  height: 100px;
+  background-color: red;
+  border-radius: 6px;
+  position: absolute;
+  left: max(calc(170px * 8), 100%);
+  animation-name: scrollleft;
+  animation-duration: 30s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.item1 {
+  animation-delay: calc(30s / 8 * (8 - 1) * -1) ;
+}
+
+.item2 {
+  animation-delay: calc(30s / 8 * (8 - 2) * -1) ;
+}
+
+.item3 {
+  animation-delay: calc(30s / 8 * (8 - 3) * -1) ;
+}
+
+.item4 {
+  animation-delay: calc(30s / 8 * (8 - 4) * -1) ;
+}
+
+.item5 {
+  animation-delay: calc(30s / 8 * (8 - 5) * -1) ;
+}
+
+.item6 {
+  animation-delay: calc(30s / 8 * (8 - 6) * -1) ;
+}
+
+.item7 {
+  animation-delay: calc(30s / 8 * (8 - 7) * -1) ;
+}
+
+.item8 {
+  animation-delay: calc(30s / 8 * (8 - 8) * -1) ;
+}
+
+@keyframes scrollleft {
+  to {
+    left: -200px;
+  }
 }
 
 .box-col {
@@ -296,6 +414,11 @@ export default {
 .products-slider .products::-webkit-scrollbar {
   display: none;
 }
+
+.producto-link {
+    text-align: center;
+}
+
 
 .products-slider-with-price {
   overflow-x: auto;
@@ -353,17 +476,11 @@ export default {
   font-weight: 400;
 }
 
-#carouselExampleCaptions {
-    max-width: 1366px;
-    max-height: 470px;
-    margin: auto; /* Centra el carrusel */
-  }
-
   #carouselExampleCaptions .carousel-inner img {
     object-fit: cover; /* Escala las imágenes para que llenen el contenedor */
     max-width: 100%; /* Ajusta el ancho máximo de la imagen */
-    max-height: 450px; /* Ajusta la altura máxima de la imagen */
+    max-height: 300px; /* Ajusta la altura máxima de la imagen */
+    align-items: center;
   } 
-
 
 </style>

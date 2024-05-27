@@ -44,6 +44,7 @@ export default {
 </script>
 
 <template>
+  <div class="background">
   <LittleHeader />
   <div class="container">
     <form id="login-form" @submit.prevent="submitForm">
@@ -73,14 +74,18 @@ export default {
     </form>
   </div>
   <LittleFooter />
+</div>
 </template>
 
 <style scoped>
+.background {
+  background-color: black;
+}
 .container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 form {

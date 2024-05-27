@@ -11,11 +11,17 @@
 
   <template>
     <div class="box-row">
-      <div v-for="(categoria, index) in categorias" :key="index" class="box-col">
-        <a href="'/FRONTEND/src/components/TestC.vue'" class="categoria-link">
-          <h3>{{ categoria.nombre }}</h3>
-        <img :src="categoria.url_imagen" class="categorias"/>
-      </a>
+      <div class="categories">
+          <div v-for="categoria in categorias" :key="categoria.id_categoria" class="card" style="width: 18rem;">
+            <router-link v-if="categoria.id_categoria" :to="{ name: 'home', params: { id: categoria.id_categoria } }" class="categoria-link">
+            <img :src="categoria.url_imagen" class="card-img-top" :alt="categoria.nombre" />
+              <div class="card-body">
+                <h5 class="card-title">{{ categoria.nombre }}</h5>
+                <p class="card-text">{{ categoria.descripcion }}</p>
+              </div>
+            </router-link>
+          </div>
+
       </div>
     </div>
   </template>
@@ -26,7 +32,20 @@
     flex-wrap: wrap;
     row-gap: 20px;
     justify-content: space-between;
+    padding-bottom: 15px;
   }
+
+  .card {
+    box-shadow: 5px 5px;
+  }
+
+  .categories {
+    padding-left: 20px;
+    padding-top: 20px;
+    gap: 40px;
+    display: flex;
+  }
+
   
   .box-col {
     display: flex;
@@ -38,6 +57,16 @@
     min-height: 200px;
     border-radius: 2%;
     transition: box-shadow 0.3s ease;
+  }
+  .card-body h5{
+    color: black;
+  }
+
+  .card-body p {
+    color: black;
+  }
+  .card-img-top {
+    height: 180px;
   }
 
   .categoria-link {
