@@ -1,12 +1,13 @@
 <script>
 import LittleHeader from '../components/LittleHeader.vue'
 import Footer from '../components/Footer.vue'
+import BackHome2 from '../components/BackHome2.vue'
 
 export default {
   components: {
     LittleHeader,
     Footer,
-    
+    BackHome2,
   }
 }
 </script>
@@ -37,20 +38,17 @@ export default {
           <label for="phone">Número de teléfono</label>
           <input type="text" id="phone" placeholder="Ingrese su número de teléfono">
         </div>
+        <div class="g-recaptcha" data-sitekey="6LdjBvEpAAAAAIMpc_F3LmHu4Vhr20jJERSVoXvz"></div>
         <button id="add-btn">Agregar Nueva Dirección</button>
-         <router-link :to=" {name: 'carrito' } ">
-          <button>Ver carrito</button>
-         </router-link>
       </form>
       <p class="additional-info">Al agregar una nueva dirección, podrás seleccionarla al realizar tu próximo pedido.</p>
     </div>       
   </div>
-    <Footer/>
+    <BackHome2 />
+    <Footer />
   </template>
   
   <style scoped>
-
-
     img {
         width: 500px;
     }

@@ -1,11 +1,12 @@
 <template>
   <Header />
+  <BackHome2 />
 
   <div>
     <h1>Productos</h1>
-    <button @click="showAddProduct = true">Add Product</button>
+    <button @click="showAddProduct = true">Añadir Producto</button>
     <div v-if="showAddProduct">
-      <h2>Add Product</h2>
+      <h2>Añadir Producto</h2>
       <form @submit.prevent="addProduct">
         <input v-model="newProduct.nombre" placeholder="Name" required />
         <textarea v-model="newProduct.descripcion" placeholder="Description"></textarea>
@@ -14,8 +15,9 @@
         <input v-model="newProduct.stock" type="number" placeholder="Stock" required />
         <input v-model="newProduct.url_imagen" placeholder="Image URL" />
         <input v-model="newProduct.id_categoria" type="number" placeholder="Category ID" required />
-        <button type="submit">Add</button>
-        <button @click="showAddProduct = false">Cancel</button>
+        <div class="g-recaptcha" data-sitekey="6LdjBvEpAAAAAIMpc_F3LmHu4Vhr20jJERSVoXvz"></div>
+        <button type="submit">Añadir</button>
+        <button @click="showAddProduct = false">Cancelar</button>
       </form>
     </div>
 
@@ -31,12 +33,12 @@
       <p>Stock: {{ product.stock }}</p>
       <img :src="product.url_imagen" alt="Product Image" />
       <p>Category ID: {{ product.id_categoria }}</p>
-      <button @click="deleteProduct(product.id_producto)">Delete</button>
-      <button @click="editProduct(product)">Edit</button>
+      <button @click="deleteProduct(product.id_producto)">Eliminar</button>
+      <button @click="editProduct(product)">Editar</button>
     </div>
 
     <div v-if="showEditProduct">
-      <h2>Edit Product</h2>
+      <h2>Editar producto</h2>
       <form @submit.prevent="updateProduct">
         <input v-model="currentProduct.nombre" placeholder="Name" required />
         <textarea v-model="currentProduct.descripcion" placeholder="Description"></textarea>
@@ -45,8 +47,8 @@
         <input v-model="currentProduct.stock" type="number" placeholder="Stock" required />
         <input v-model="currentProduct.url_imagen" placeholder="Image URL" />
         <input v-model="currentProduct.id_categoria" type="number" placeholder="Category ID" required />
-        <button type="submit">Update</button>
-        <button @click="showEditProduct = false">Cancel</button>
+        <button type="submit">Actualizar</button>
+        <button @click="showEditProduct = false">Cancelar</button>
       </form>
     </div>
   </div>
@@ -57,12 +59,15 @@
 <script>
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
+import BackHome2 from '../components/BackHome2.vue';
 import axios from 'axios';
+import BackHome from '@/components/BackHome.vue';
 
 export default {
   components: {
     Header,
     Footer,
+    BackHome2,
   },
   data() {
     return {
@@ -138,5 +143,9 @@ export default {
 .error-message {
   color: red;
   margin: 10px 0;
+}
+
+.g-recaptcha {
+  padding: 5px;
 }
 </style>

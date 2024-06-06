@@ -2,8 +2,10 @@
 import { createStore } from 'vuex';
 
 export default createStore({
+
   state: {
-    carrito: []
+    carrito: [],
+    ordenes: []
   },
   mutations: {
     AGREGAR_AL_CARRITO(state, { producto, cantidad }) {
@@ -25,6 +27,12 @@ export default createStore({
           state.carrito = state.carrito.filter(item => item.producto.id_producto !== id_producto);
         }
       }
+    },
+    AÑADIR_ORDEN(state, orden) {
+      state.ordenes.push(orden);
+    },
+    VACIAR_CARRITO(state) {
+      state.carrito = [];
     }
   },
   actions: {
@@ -36,6 +44,18 @@ export default createStore({
     },
     actualizarCantidad({ commit }, { id_producto, cantidad }) {
       commit('ACTUALIZAR_CANTIDAD', { id_producto, cantidad });
-    }
+    },
+    crearOrden({ commit, state }) {
+      const orden = {
+        id: new Date().getTime(), // Generar un ID único para la orden
+        items: [...state.carrito]
+      };
+      commit('AÑADIR_ORDEN', orden);
+      commit('VACIAR_CARRITO');
+    },
+  },
+  getters: {
+    carrito: state => state.carrito,
+    ordenes: state => state.ordenes
   }
 });

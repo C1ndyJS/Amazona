@@ -3,6 +3,7 @@ import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import CategoryRow from '../components/CategoryRow.vue'
 import BackHome from '../components/BackHome.vue'
+import NewsletterFooter from '../components/NewsletterFooter.vue'
 import axios from 'axios'
 
 export default {
@@ -11,6 +12,7 @@ export default {
     Footer,
     BackHome,
     CategoryRow,
+    NewsletterFooter,
   },
   data() {
     return {
@@ -20,23 +22,7 @@ export default {
   },
 
   created() {
-    // Verificar si hay un token de sesión almacenado
-    const token = localStorage.getItem('token')
-    if (!token) {
-      // Si no hay token, redirigir al usuario a la página de inicio de sesión
-      //this.$router.push('/login')
-    } else {
-      // Imprimir el token en la consola
-      console.log('Token:', token)
-
-      // Decodificar y mostrar el contenido del token
-      const payloadBase64 = token.split('.')[1]
-      const decodedPayload = atob(payloadBase64)
-      const payloadObj = JSON.parse(decodedPayload)
-      console.log('Contenido del payload:', payloadObj)
-    }
-    
-    
+       
     // Realizar la solicitud para obtener categorías
     axios.get('http://localhost:3003/api/categorias')
       .then(response => {
@@ -144,7 +130,7 @@ export default {
     </div>
   </div>
 
- 
+   
   <div class="box-row">
     <div class="box-col">
       <h3>Papeleria</h3>
@@ -283,6 +269,8 @@ export default {
       </div>
      </div>
     </div>
+    
+    <NewsletterFooter />
    <BackHome />
  <Footer />
 </template>

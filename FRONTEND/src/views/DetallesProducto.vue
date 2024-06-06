@@ -1,8 +1,6 @@
 <template>
-  <!--<input v-model.number="cantidad" type="number" min="1" placeholder="Cantidad" />
-        -->
   <Header />
-
+  <BackHome2 />
   <section id="prodetails" class="section-p1">
     <div class="single-pro-image">
       <img :src="producto.url_imagen" :alt="producto.nombre" width="100%" id="MainImage"/>
@@ -23,8 +21,6 @@
       </div>
     </div>
 
-
-
     <div class="single-pro-details">
       <h6>Inicio / {{producto.id_producto}}</h6>
       <h4>{{producto.nombre}}</h4>
@@ -37,7 +33,12 @@
         <option>XL</option>
       </select>
       <input v-model.number="cantidad" type="number" min="1" placeholder="">
-      <button class="normal" @click="agregarProductoAlCarrito">Agregar al carrito</button>
+      <div class="g-recaptcha" 
+         data-sitekey="6LdjBvEpAAAAAIMpc_F3LmHu4Vhr20jJERSVoXvz" 
+         data-callback="onRecaptchaSuccess" 
+         data-expired-callback="onRecaptchaExpired">
+    </div> 
+    <button class="normal" :disabled="!isCaptchaVerified" @click="agregarProductoAlCarrito">Agregar al carrito</button>
       <h4>Detalles del Producto</h4>
       <span>{{ producto.descripcion }}</span>
     </div>
@@ -64,7 +65,6 @@
   </div>
 
   <BackHome/>
-
   <Footer />
 </template>
 
@@ -72,24 +72,33 @@
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
 import BackHome from '../components/BackHome.vue'
+import BackHome2 from '../components/BackHome2.vue'
 import axios from 'axios'
 import { mapActions } from 'vuex'
 
 export default {
+
   components: {
     Header,
     Footer,
     BackHome,
+    BackHome2,
   },
   props: ['id'],
   data() {
     return {
       productos: [],
       producto: {},
-      cantidad: 1
-    };
+      cantidad: 1,
+      isCaptchaVerified: true,
+      recaptchaToken: '',
+    }
   },
   created() {
+
+    window.onRecaptchaSuccess = this.onRecaptchaSuccess;
+    window.onRecaptchaExpired = this.onRecaptchaExpired;
+
     axios.get(`http://localhost:3003/api/productos/${this.id}`)
       .then(response => {
         this.producto = response.data;
@@ -109,11 +118,19 @@ export default {
   },
   methods: {
     ...mapActions(['agregarAlCarrito']),
-    agregarProductoAlCarrito() {  // Renombrado el método
+    agregarProductoAlCarrito() { 
       this.agregarAlCarrito({ producto: this.producto, cantidad: this.cantidad });
+    },
+    onRecaptchaSuccess(token) {
+      this.isCaptchaVerified = true;
+      this.recaptchaToken = token;
+    },
+    onRecaptchaExpired() {
+      this.isCaptchaVerified = false;
+      this.recaptchaToken = '';
     }
   }
-};
+}
 </script>
 
 <style>
@@ -140,6 +157,10 @@ export default {
 .small-img-col {
   flex-basis: 24%;
   cursor: pointer;
+}
+
+.g-recaptcha{
+  padding: 5px;
 }
 
 #prodetails .single-pro-details {

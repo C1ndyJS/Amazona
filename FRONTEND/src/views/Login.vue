@@ -2,11 +2,13 @@
 import axios from 'axios'
 import LittleHeader from '../components/LittleHeader.vue'
 import LittleFooter from '../components/LittleFooter.vue'
+import BackHome2 from '../components/BackHome2.vue'
 
 export default {
   components: {
     LittleHeader,
-    LittleFooter
+    LittleFooter,
+    BackHome2,
   },
   data() {
     return {
@@ -73,8 +75,9 @@ export default {
       <p v-if="loginError" style="color: red">{{ loginError }}</p>
     </form>
   </div>
-  <LittleFooter />
 </div>
+<BackHome2 />
+<LittleFooter />
 </template>
 
 <style scoped>

@@ -1,6 +1,35 @@
+<template>
+  <div>
+    <LittleHeader />
+    <div class="container">
+      <form id="registro-form" class="box-visible">
+        <h1>Crear cuenta</h1>
+        <label for="nombre">Tu nombre:</label>
+        <input type="text" id="nombre" placeholder="Nombres" required v-model="nombre" />
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" placeholder="Apellido" required v-model="apellido" />
+        <label for="email">Email:</label>
+        <input type="email" id="email" placeholder="Ingrese su correo electrónico" required v-model="correo" />
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" placeholder="Mínimo 6 caracteres" required v-model="contrasena" />
+        <label for="direccion">Dirección:</label>
+        <input type="text" id="direccion" placeholder="Ingrese su dirección" v-model="direccion" />
+        <label for="telefono">Teléfono: </label>
+        <input type="text" id="telefono" placeholder="Ingrese su teléfono" v-model="telefono" />
+        
+        <button type="button" id="registro-submit" @click="registrarUsuario">Registrarse</button>
+        <div v-if="mensajeError" class="error">{{ mensajeError }}</div>
+        <div v-if="mensajeExito" class="exito">{{ mensajeExito }}</div>
+      </form>
+    </div>
+    <Footer />
+  </div>
+</template>
+
 <script>
 import LittleHeader from '../components/LittleHeader.vue'
 import Footer from '../components/Footer.vue'
+import axios from 'axios'
 
 export default {
   components: {
@@ -9,99 +38,96 @@ export default {
   },
   data() {
     return {
-      id: 6,
       nombre: '',
-      apellido: '', // Asegúrate de agregar esta línea
+      apellido: '',
       correo: '',
-      contraseña: '',
-      direccion: 'Av dsfsdf'
+      contrasena: '',
+      direccion: '',
+      telefono: '',
+      id_ciudad: 1,
+      rol: 0,
+      mensajeError: '',
+      mensajeExito: ''
     }
   },
   methods: {
     async registrarUsuario() {
+      this.mensajeError = ''
+      this.mensajeExito = ''
+      
       try {
-        const response = await axios.post('/api/usuarios', {
-          id: this.id,
+        // Verificar si el correo electrónico ya está registrado
+        const response = await axios.get(`http://localhost:3003/api/usuarios/${this.correo}`)
+
+        // Registrar usuario
+        const registroResponse = await axios.post('http://localhost:3003/api/usuarios', {
+          correo: this.correo,
           nombre: this.nombre,
           apellido: this.apellido,
-          correo: this.correo,
-          contraseña: this.contraseña,
-          direccion: this.direccion
+          contrasena: this.contrasena,
+          direccion: this.direccion,
+          telefono: this.telefono,
+          rol: this.rol,
+          id_ciudad: this.id_ciudad
         })
-        console.log('Usuario registrado:', response.data)
-        // Aquí podrías hacer algo con la respuesta, como redirigir al usuario a otra página o mostrar un mensaje de éxito
+
+        this.mensajeExito = 'Usuario registrado con éxito.'
+        
+        // Limpiar formulario después de registro exitoso
+        this.nombre = ''
+        this.apellido = ''
+        this.correo = ''
+        this.contrasena = ''
+        this.direccion = ''
+        this.telefono = ''
+        this.id_ciudad = 1
+        this.rol = 0
+
+        setTimeout(() => {
+          this.$router.push('/login')
+        }, 2000)
       } catch (error) {
-        console.error('Error al registrar usuario:', error.response.data.error)
-        // Aquí podrías manejar el error, como mostrar un mensaje de error al usuario
+        console.error('Error al registrar usuario:', error)
+        this.mensajeError = 'Hubo un error al registrar el usuario. Por favor, inténtalo de nuevo.'
       }
     }
   }
 }
 </script>
 
-<template>
-  <LittleHeader />
-  <div class="container">
-    <form id="registro-form" class="box-visible">
-      <h1>Crear cuenta</h1>
-      <label for="nombre">Tu nombre:</label>
-      <input type="text" id="username" placeholder="Nombres" required v-model="nombre" />
-      <label for="nombre">Apellido:</label>
-      <input type="text" id="apellido" placeholder="Apellido" required v-model="apellido" />
-      <label for="email">Email:</label>
-      <input type="email" id="email" placeholder="Ingrese informacion" required v-model="correo" />
-      <label for="password">Contraseña</label>
-      <input
-        type="password"
-        id="password"
-        placeholder="Minimo 6 caracteres"
-        required
-        v-model="contraseña"
-      />
-      <!-- Botón para enviar el formulario de registro -->
-      <button type="submit" id="registro-submit" @click="registrarUsuario">Registrarse</button>
-    </form>
-  </div>
-
-  <Footer />
-</template>
-
 <style scoped>
 .container {
   display: flex;
   justify-content: center;
-  margin-top: 14px;
-  margin-bottom: 14px;
-}
-
-body {
-  background-color: #f0f0f0; /* Cambia el color de fondo del lienzo */
-  margin: 0; /* Asegura que no haya margen alrededor del lienzo */
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
   align-items: center;
+  margin-top: 50px;
 }
 
 form {
   width: 300px;
-  height: 450px;
+  height: auto;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  box-shadow: 10px 4px 10px 10px #ccc;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
+  padding: 20px;
   background-color: #fcfafa;
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 input {
-  width: 80%;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+button {
+  width: 100%;
+  margin-top: 20px;
 }
 
 form img {
@@ -112,7 +138,7 @@ form img {
 
 form input[type='text'],
 input[type='password'] {
-  outline: 0px;
+  outline: 0;
   border: 1px solid #ccc;
   width: 80%;
   padding: 10px;
@@ -126,27 +152,26 @@ form label {
 .crear-cuenta-btn {
   outline: 0;
   border: 0;
-  color: #ffffff; /* Color del texto */
-  background-color: #e2c419; /* Color de fondo */
+  color: #ffffff;
+  background-color: #e2c419;
   width: 248px;
   padding: 3px;
   transition: all 0.3s ease-in-out;
-  border-radius: 20px; /* Borde redondeado */
+  border-radius: 20px;
   text-align: center;
   color: black;
   font-weight: 480;
-  text-decoration: none; /* Sin subrayado */
-  font-weight: 500;
+  text-decoration: none;
 }
 
 .crear-cuenta-btn:hover {
-  background-color: #d6ba18; /* Color de fondo al pasar el mouse */
+  background-color: #d6ba18;
 }
 
 #registro-form button {
   outline: 0;
   border: 0;
-  background-color: #e2c419; /*#96b896*/
+  background-color: #e2c419;
   border-radius: 20px;
   cursor: pointer;
   width: 250px;
@@ -155,7 +180,16 @@ form label {
   text-align: center;
   color: black;
   font-weight: 480;
-
   margin-top: 25px;
+}
+
+.error {
+  color: red;
+  margin-top: 10px;
+}
+
+.exito {
+  color: green;
+  margin-top: 10px;
 }
 </style>

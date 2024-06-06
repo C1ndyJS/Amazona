@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import DetallesProducto from '../views/DetallesProducto.vue'
 import Carrito from '../views/Carrito.vue'
+import Ordenes from '../views/Ordenes.vue'
 
 
 const router = createRouter({
@@ -27,11 +28,6 @@ const router = createRouter({
       path: '/customerService',
       name: 'customerService',
       component: () => import('../views/CustomerService.vue')
-    },
-    {
-      path: '/pedidos',
-      name: 'pedidos',
-      component: () => import('../views/Pedidos.vue')
     },
     {
       path: '/deals',
@@ -107,6 +103,11 @@ const router = createRouter({
       path: '/categories',
       name: 'categories',
       component: () => import('../views/Categories.vue')
+    },
+    {
+      path: '/ordenes',
+      name: 'ordenes',
+      component: Ordenes
     }
   ]
 })

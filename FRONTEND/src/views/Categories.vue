@@ -1,17 +1,18 @@
 <template>
   <Header />
+  <BackHome2 />
 
   <div>
     <h1>Categorías</h1>
-    <button @click="showAddCategory = true">Add Category</button>
+    <button @click="showAddCategory = true">Añadir categoria</button>
     <div v-if="showAddCategory">
-      <h2>Add Category</h2>
+      <h2>Añadir categoria</h2>
       <form @submit.prevent="addCategory">
         <input v-model="newCategory.nombre" placeholder="Name" required />
         <textarea v-model="newCategory.descripcion" placeholder="Description"></textarea>
         <input v-model="newCategory.url_imagen" placeholder="Image URL" />
-        <button type="submit">Add</button>
-        <button @click="showAddCategory = false">Cancel</button>
+        <button type="submit">Añadir</button>
+        <button @click="showAddCategory = false">Cancelar</button>
       </form>
     </div>
 
@@ -23,18 +24,18 @@
       <h2>{{ category.nombre }}</h2>
       <p>{{ category.descripcion }}</p>
       <img :src="category.url_imagen" alt="Category Image" />
-      <button @click="deleteCategory(category.id_categoria)">Delete</button>
-      <button @click="editCategory(category)">Edit</button>
+      <button @click="deleteCategory(category.id_categoria)">Eliminar</button>
+      <button @click="editCategory(category)">Editar</button>
     </div>
 
     <div v-if="showEditCategory">
-      <h2>Edit Category</h2>
+      <h2>Editar categoria</h2>
       <form @submit.prevent="updateCategory">
         <input v-model="currentCategory.nombre" placeholder="Name" required />
         <textarea v-model="currentCategory.descripcion" placeholder="Description"></textarea>
         <input v-model="currentCategory.url_imagen" placeholder="Image URL" />
-        <button type="submit">Update</button>
-        <button @click="showEditCategory = false">Cancel</button>
+        <button type="submit">Actualizar</button>
+        <button @click="showEditCategory = false">Cancelar</button>
       </form>
     </div>
   </div>
@@ -45,12 +46,14 @@
 <script>
 import Header from '../components/Header.vue'
 import Footer from '../components/Footer.vue'
+import BackHome2 from '../components/BackHome2.vue';
 import axios from 'axios';
 
 export default {
   components: {
     Header,
     Footer,
+    BackHome2,
   },
   data() {
     return {

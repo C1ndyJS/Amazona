@@ -21,16 +21,17 @@
       <h3>Carrito de Compras</h3>
       <h4>Total de artículos: {{ totalItems }}</h4>
       <h2>Total a pagar: ${{ totalPrice.toFixed(2) }}</h2>
+      <button @click="crearLaOrden">Crear Orden</button>
+      <div class="g-recaptcha" data-sitekey="6LdjBvEpAAAAAIMpc_F3LmHu4Vhr20jJERSVoXvz"></div>
       <div id="paypal-button-container"></div>
     </div>
     
   </section>
   <BackHome />
   <Footer />
-
-  
-
 </template>
+
+
 
 <script>
 import Header from '../components/Header.vue'
@@ -57,7 +58,7 @@ export default {
     }
   },
   methods: {
-    ...mapActions(['quitarDelCarrito', 'actualizarCantidad']),
+    ...mapActions(['quitarDelCarrito', 'actualizarCantidad', 'crearOrden']),
     quitarProductoDelCarrito(id_producto) {
       this.quitarDelCarrito(id_producto);
     },
@@ -66,6 +67,10 @@ export default {
       if (!isNaN(cantidadInt) && cantidadInt >= 0) {
         this.actualizarCantidad({ id_producto, cantidad: cantidadInt });
       }
+    },
+    crearLaOrden() {
+      this.crearOrden();
+      alert('Orden creada exitosamente');
     },
     loadPayPalScript() {
       return new Promise((resolve, reject) => {
@@ -186,6 +191,14 @@ export default {
   height: 100px;
   object-fit: cover;
   margin-right: 20px;
+}
+
+.single-pro-details button{
+  padding: 5px;
+}
+
+.g-recaptcha {
+  padding: 5px;
 }
 
 .producto-detalles {
