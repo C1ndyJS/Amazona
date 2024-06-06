@@ -1,83 +1,66 @@
 # Amazona
-Proyecto desarrollado durante la materia de Laboratorio de Software de ISC UTP, 2024-1
+Proyecto desarrollado durante la materia de Laboratorio de Software de ISC UTP, 2024-1, que tiene como finalidad demostrar los conocimientos adquiridos de la carrera, el trabajo en equipo y la colaboracion, ademas de una practica experimental en los principios de desarrollo agil con SCRUM 
 
 ## Comenzando 🚀
-
-_Estas instrucciones te permitirán obtener una copia del proyecto en funcionamiento en tu máquina local para propósitos de desarrollo y pruebas._
-
-Mira **Deployment** para conocer como desplegar el proyecto.
-
-
 ### Pre-requisitos 📋
+- Visual Studio Code 
+- Node.js
+- npm (Node Package Manager)
+- Vue CLI
 
-_Que cosas necesitas para instalar el software y como instalarlas_
+## Instalar Node.js y npm
+   https://nodejs.org/en/download/
 
-```
-Da un ejemplo
-```
+### Instalar Vue CLI
+``` npm install -g @vue/cli ```
 
-## Ejecutando las pruebas ⚙️
+## Clonar el repositorio
+``` git clone https://github.com/tu/proyecto.git ```
 
-_Explica como ejecutar las pruebas automatizadas para este sistema_
+- Navegar al directorio del proyecto
+``` cd proyecto ```
 
-### Analice las pruebas end-to-end 🔩
+##  BACKEND ⚙️
+Navegar al directorio del Backend
+```  cd Backend ``` 
 
-_Explica que verifican estas pruebas y por qué_
+Instalar dependencias del backend
+```  npm install ``` 
 
-```
-Da un ejemplo
-```
+##  ⚙️ Iniciar el backend
+```  npm start ``` 
 
-### Y las pruebas de estilo de codificación ⌨️
+##  FRONTEND ⚙️
 
-_Explica que verifican estas pruebas y por qué_
+Navegar al directorio del frontend
+```  cd frontend ``` 
 
-```
-Da un ejemplo
-```
+Instalar dependencias del frontend
+``` npm install ``` 
 
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
+##  ⚙️ Iniciar el frontend
+``` npm run serve ``` 
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
-
+* [Node.js](https://nodejs.org/) - Entorno de ejecución para JavaScript
+* [Express](https://expressjs.com/) - Framework para backend
+* [Vue 3](https://vuejs.org/) - Framework para frontend
+   
 ## Autores ✒️
 
-_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
+* **Juan Felipe Agudelo** - *Frontend y Backend* [Aquailusion2000](https://github.com/Aquailusion2000)
+* **Cindy Jimenez** - *Frontend y Backend* [C1ndyJS](https://github.com/C1ndyJS)
+* **Nicolás Duque** - *Frontend y Backend*[mesopotamico](https://github.com/mesopotamico)
+* **William Yamith Aguirre** - *Frontend*[theemonkey](https://github.com/theemonkey)
 
-* **Villanueva** - *Trabajo Inicial* - [villanuevand](https://github.com/villanuevand)
-* **Detal** - *Documentación* - [fulanitodetal](#fulanito-de-tal)
+También puedes mirar la lista de todos los [contribuyentes](https://github.com/C1ndyJS/Amazona/graphs/contributors) quienes han participado en este proyecto. 
 
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
+* ## Expresiones de Gratitud 🎁
 
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* Dona con cripto a esta dirección: `0xf253fc233333078436d111175e5a76a649890000`
-* etc.
-
-
-
+* Quiero agradecer públicamente a Nicolás Duque y Juan Felipe por el compartir de la creacion de este proyecto, y al profesor ALexander Bejarano por motivarnos a trabajar con desarrollo Agil. Aunque todavia no esta completamente terminado, la experiencia del desarrollo Scrum marca un antes y un despues en nuestro aprendizaje como desarrolladores ¡No podríamos haberlo hecho y aprendido tanto sin usted!
+  
+*Tambien contar que 📢 Este proyecto de ecommerce inspirado en Amazon, llamado Amazona, es una excelente referencia para aprender sobre el desarrollo de aplicaciones web con Node.js, Express y Vue 3. ¡Deberías echarle un vistazo!
+  
 ---
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
+⌨️ con ❤️ por [C1ndyJS](https://github.com/C1ndyJS) 😊
